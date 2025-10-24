@@ -18,3 +18,8 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'user_type', 'is_staff', 'is_active')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
+# hi
+
+
+
+
