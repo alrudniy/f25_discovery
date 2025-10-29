@@ -16,10 +16,10 @@ h1 { margin-top:0; }
 .form-field input[type="text"], .form-field input[type="email"], .form-field input[type="password"] { padding:.6rem .7rem; border:1px solid #cbd5e1; border-radius:.5rem; }
 fieldset.form-field { border:1px solid #e5e7eb; border-radius:.6rem; padding:.75rem 1rem; }
 .button-row { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
-.btn { display:inline-block; background:#111827; color:#fff; text-decoration:none; padding:.6rem .9rem; border-radius:.6rem; }
-.btn.primary { background:cornflowerblue; }
+.btn { display:inline-block; background:blue; color:#fff; text-decoration:none; padding:.6rem .9rem; border-radius:.6rem; }
+.btn.primary { background:blue; }
 .btn:hover { filter:brightness(1.05); }
 .muted { color:#64748b; }
 .error { color:#b91c1c; font-size:.9rem; margin-top:.25rem; }
 .messages { list-style:none; padding:0; }
-.messages li { background:aliceblue; border:1px solid cornflowerblue; color:midnightblue; padding:.6rem .9rem; border-radius:.5rem; margin:.5rem 0; }
+.messages li { background:aliceblue; border:1px solid blue; color:midnightblue; padding:.6rem .9rem; border-radius:.5rem; margin:.5rem 0; }
