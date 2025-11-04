@@ -29,7 +29,7 @@
     <input type="text" name="q" placeholder="Search projects by title or description..." value="{{ current_query }}">
     <select name="field">
       {% for field_option in available_fields %}
-        <option value="{{ field_option }}" {% if current_field == field_option %}selected{% endif %}>
+        <option value="{{ field_option }}" {% if current_field|lower == field_option|lower %}selected{% endif %}>
           {% if field_option == 'All' %}All Fields{% else %}{{ field_option }}{% endif %}
         </option>
       {% endfor %}
