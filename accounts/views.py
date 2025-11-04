@@ -25,7 +25,7 @@ class RegisterView(FormView):
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
     authentication_form = EmailAuthenticationForm
-    redirect_authenticated_user = True
+    redirect_authenticated_user = False
 
     def get_success_url(self):
         if self.request.user.is_authenticated and self.request.user.user_type == User.UserType.COMPANY:
