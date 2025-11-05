@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block body %}
 <style>
     :root {
       --bg: #f5f7fb;
@@ -111,4 +111,12 @@
   <p class="sub">Connecting innovators, companies, and universities.</p>
 
   <div class="role-buttons">
-    <a href="{% url 'register' %}?type=university">I am a University</
+    <a href="{% url 'register' %}?type=university">I am a University</a>
+    <a href="{% url 'register' %}?type=company">I am a Company</a>
+  </div>
+
+  <p class="hint">Already have an account?
+    <a href="{% url 'login' %}" class="text-link">Log in</a>
+  </p>
+</main>
+{% endblock body %}
