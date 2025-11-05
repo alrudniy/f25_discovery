@@ -11,7 +11,10 @@
       </div>
       <div class="form-field">
         <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
-        {{ form.password }}
+        <div class="password-wrapper">
+          {{ form.password }}
+          <button type="button" class="password-toggle" aria-label="Show password">Show</button>
+        </div>
         {% if form.password.errors %}<div class="error">{{ form.password.errors.0 }}</div>{% endif %}
       </div>
       <button class="btn primary" type="submit">Sign in</button>
