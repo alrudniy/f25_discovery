@@ -6,8 +6,10 @@
   <title>Discovery Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+  {% block header %}
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
@@ -33,7 +35,9 @@
       </nav>
     </div>
   </header>
+  {% endblock header %}
 
+  {% block page_content %}
   <main class="container">
     {% if messages %}
       <ul class="messages">
@@ -50,5 +54,6 @@
       <small>&copy; {% now "Y" %} Discovery Hub</small>
     </div>
   </footer>
+  {% endblock page_content %}
 </body>
 </html>
