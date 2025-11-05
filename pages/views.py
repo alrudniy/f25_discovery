@@ -20,7 +20,7 @@ def screen3(request):
     return render(request, 'pages/screen3.html', {'role': role})
 
 @login_required
-def notifications(request):
+def notifications(request): # added for notifications page
     # This is dummy data for now.
     current_notifications = [
         "Your profile was updated.",
