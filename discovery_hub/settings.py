@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +53,13 @@ DATABASES = {
         'CONN_MAX_AGE': 60,
     }
 }
+
+# Use in-memory SQLite database for testing to avoid permission issues and for speed.
+if 'test' in sys.argv or 'test' == os.environ.get('DJANGO_ENV'):
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    }
 
 AUTH_USER_MODEL = 'accounts.User'
 
