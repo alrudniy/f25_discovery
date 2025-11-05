@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 
-{% block header %}
-  <!-- The header is intentionally left empty for the welcome page's full-screen design. -->
-{% endblock header %}
-
-{% block page_content %}
+{% block body %}
 <style>
     :root {
       --bg: #f5f7fb;
@@ -123,4 +119,4 @@
     <a href="{% url 'login' %}" class="text-link">Log in</a>
   </p>
 </main>
-{% endblock page_content %}
+{% endblock body %}

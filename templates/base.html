@@ -10,35 +10,35 @@
 </head>
 <body>
 
-  {% block header %}
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
-        <nav>
-          <ul class="nav">
-            {% if user.is_authenticated %}
-              <li><a href="{% url 'screen1' %}">Screen 1</a></li>
-              <li><a href="{% url 'screen2' %}">Screen 2</a></li>
-              <li><a href="{% url 'screen3' %}">Screen 3</a></li>
-              <li class="divider"></li>
-              <li class="muted">Hi, {{ user.display_name }}</li>
-              <li>
-                <form method="post" action="{% url 'logout' %}" style="display:inline">
-                  {% csrf_token %}
-                  <button type="submit" class="btn">Log out</button>
-                </form>
-              </li>
-            {% else %}
-              <li><a href="{% url 'login' %}">Log in</a></li>
-              <li><a href="{% url 'register' %}">Create account</a></li>
-            {% endif %}
-          </ul>
-        </nav>
-      </div>
-    </header>
-  {% endblock header %}
+  {% block body %}
+    {% block header %}
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
+          <nav>
+            <ul class="nav">
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'screen1' %}">Screen 1</a></li>
+                <li><a href="{% url 'screen2' %}">Screen 2</a></li>
+                <li><a href="{% url 'screen3' %}">Screen 3</a></li>
+                <li class="divider"></li>
+                <li class="muted">Hi, {{ user.display_name }}</li>
+                <li>
+                  <form method="post" action="{% url 'logout' %}" style="display:inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Log out</button>
+                  </form>
+                </li>
+              {% else %}
+                <li><a href="{% url 'login' %}">Log in</a></li>
+                <li><a href="{% url 'register' %}">Create account</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </header>
+    {% endblock header %}
 
-  {% block page_content %}
     <main class="container">
       {% if messages %}
         <ul class="messages">
@@ -50,12 +50,14 @@
       {% block content %}{% endblock %}
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <small>&copy; {% now "Y" %} Discovery Hub</small>
-      </div>
-    </footer>
-  {% endblock page_content %}
+    {% block footer %}
+      <footer class="site-footer">
+        <div class="container">
+          <small>&copy; {% now "Y" %} Discovery Hub</small>
+        </div>
+      </footer>
+    {% endblock footer %}
+  {% endblock body %}
 
 </body>
 </html>
