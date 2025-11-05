@@ -1,59 +1,25 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>Discovery Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  {% block header %}
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
-      <nav>
-        <ul class="nav">
-          {% if user.is_authenticated %}
-            <li><a href="{% url 'screen1' %}">Screen 1</a></li>
-            <li><a href="{% url 'screen2' %}">Screen 2</a></li>
-            <li><a href="{% url 'screen3' %}">Screen 3</a></li>
-            <li class="divider"></li>
-            <li class="muted">Hi, {{ user.display_name }}</li>
-            <li>
-              <form method="post" action="{% url 'logout' %}" style="display:inline">
-                {% csrf_token %}
-                <button type="submit" class="btn">Log out</button>
-              </form>
-            </li>
-          {% else %}
-            <li><a href="{% url 'login' %}">Log in</a></li>
-            <li><a href="{% url 'register' %}">Create account</a></li>
-          {% endif %}
-        </ul>
-      </nav>
-    </div>
-  </header>
-  {% endblock header %}
+{% extends "base.html" %}
 
-  {% block page_content %}
-  <main class="container">
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-    {% block content %}{% endblock %}
-  </main>
+{% block header %}{% endblock header %}  {# removes the top nav #}
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>&copy; {% now "Y" %} Discovery Hub</small>
+{% block page_content %}
+<div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-white to-indigo-100 font-sans">
+  <div class="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-md text-center border border-gray-100">
+    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+      DH
     </div>
-  </footer>
-  {% endblock page_content %}
-</body>
-</html>
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome to Discovery Hub</h1>
+    <p class="text-gray-600 mb-6">Connecting innovators, companies, and universities.</p>
+
+    <div class="flex flex-col gap-3 mb-4">
+      <a href="{% url 'register' %}?type=university" class="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">I am a University</a>
+      <a href="{% url 'register' %}?type=company" class="bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition font-semibold">I am a Company</a>
+    </div>
+
+    <p class="text-gray-500">
+      Already have an account?
+      <a href="{% url 'login' %}" class="text-blue-600 font-semibold hover:underline">Log in</a>
+    </p>
+  </div>
+</div>
+{% endblock page_content %}
