@@ -16,7 +16,7 @@ class RegisterView(FormView):
 
     def get_initial(self):
         initial = super().get_initial()
-        user_type = self.request.GET.get('type') or self.request.session.get('selected_user_type')
+        user_type = self.request.GET.get('user_type') or self.request.session.get('selected_user_type')
         if user_type:
             initial['user_type'] = user_type
         return initial
@@ -31,7 +31,7 @@ class CustomLoginView(LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user_type = self.request.GET.get('type')
+        user_type = self.request.GET.get('user_type')
         if user_type:
             self.request.session['selected_user_type'] = user_type
         context['selected_user_type'] = user_type
