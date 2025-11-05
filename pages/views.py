@@ -18,3 +18,20 @@ def screen2(request):
 def screen3(request):
     role = request.user.user_type.title() if hasattr(request.user, 'user_type') else 'User'
     return render(request, 'pages/screen3.html', {'role': role})
+
+@login_required
+def notifications(request):
+    # This is dummy data for now.
+    current_notifications = [
+        "Your profile was updated.",
+        "You have a new message from Admin.",
+    ]
+    previous_notifications = [
+        "Your password was changed a week ago.",
+        "Welcome to the platform!",
+    ]
+    context = {
+        'current_notifications': current_notifications,
+        'previous_notifications': previous_notifications,
+    }
+    return render(request, 'pages/notifications.html', context)

@@ -35,16 +35,27 @@
     </div>
   </header>
 
-  <main class="container">
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
+  <div class="container" style="display: flex; gap: 2rem;">
+    <aside style="width: 200px; flex-shrink: 0;">
+      <h4>Files</h4>
+      <ul style="list-style-type: none; padding-left: 0;">
+        <li>pages/views.py</li>
+        <li>pages/urls.py</li>
+        <li>templates/base.html</li>
+        <li>pages/templates/pages/notifications.html</li>
       </ul>
-    {% endif %}
-    {% block content %}{% endblock %}
-  </main>
+    </aside>
+    <main style="flex-grow: 1;">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
 
   <footer class="site-footer">
     <div class="container">
