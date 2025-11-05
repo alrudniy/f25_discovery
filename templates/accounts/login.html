@@ -134,7 +134,7 @@
 
 {% block body %}
 <main class="card">
-  <div class="logo">DH</div>
+  <a href="{% url 'welcome' %}"><div class="logo">DH</div></a>
   <h1>Sign In{% if selected_user_type %} as {{ selected_user_type|title }}{% endif %}</h1>
 
   <form method="post" novalidate>
