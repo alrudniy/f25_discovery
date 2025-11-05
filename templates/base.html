@@ -8,53 +8,50 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body>
   {% block header %}
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <a class="font-bold text-xl text-gray-800" href="{% url 'welcome' %}">Discovery Hub</a>
-        </div>
-        <div class="hidden md:flex items-center space-x-4">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
+      <nav>
+        <ul class="nav">
           {% if user.is_authenticated %}
-            <a href="{% url 'screen1' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Screen 1</a>
-            <a href="{% url 'screen2' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Screen 2</a>
-            <a href="{% url 'screen3' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Screen 3</a>
-            <div class="w-px bg-gray-200 h-6 mx-2"></div>
-            <span class="text-gray-500 text-sm">Hi, {{ user.display_name }}</span>
-            <form method="post" action="{% url 'logout' %}" class="inline">
-              {% csrf_token %}
-              <button type="submit" class="bg-gray-800 text-white hover:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium">Log out</button>
-            </form>
+            <li><a href="{% url 'screen1' %}">Screen 1</a></li>
+            <li><a href="{% url 'screen2' %}">Screen 2</a></li>
+            <li><a href="{% url 'screen3' %}">Screen 3</a></li>
+            <li class="divider"></li>
+            <li class="muted">Hi, {{ user.display_name }}</li>
+            <li>
+              <form method="post" action="{% url 'logout' %}" style="display:inline">
+                {% csrf_token %}
+                <button type="submit" class="btn">Log out</button>
+              </form>
+            </li>
           {% else %}
-            <a href="{% url 'login' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Log in</a>
-            <a href="{% url 'register' %}" class="bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">Create account</a>
+            <li><a href="{% url 'login' %}">Log in</a></li>
+            <li><a href="{% url 'register' %}">Create account</a></li>
           {% endif %}
-        </div>
-        <!-- Mobile menu button can be added here -->
-      </div>
-    </nav>
+        </ul>
+      </nav>
+    </div>
   </header>
   {% endblock header %}
 
   {% block page_content %}
-  <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+  <main class="container">
     {% if messages %}
-      <div class="space-y-2 mb-6">
+      <ul class="messages">
         {% for message in messages %}
-          <div class="rounded-md p-4 {% if message.tags == 'success' %}bg-green-100 border border-green-200 text-green-800{% elif message.tags == 'error' %}bg-red-100 border-red-200 text-red-800{% else %}bg-blue-100 border-blue-200 text-blue-800{% endif %}">
-            {{ message }}
-          </div>
+          <li class="{{ message.tags }}">{{ message }}</li>
         {% endfor %}
-      </div>
+      </ul>
     {% endif %}
     {% block content %}{% endblock %}
   </main>
 
-  <footer class="bg-white border-t">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
-      <small class="text-gray-500">&copy; {% now "Y" %} Discovery Hub</small>
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; {% now "Y" %} Discovery Hub</small>
     </div>
   </footer>
   {% endblock page_content %}
