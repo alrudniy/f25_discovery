@@ -1,0 +1,122 @@
+
+# 2025-10-27 12:53:55.792765
++y
+
+# 2025-10-27 12:54:44.710659
++n
+
+# 2025-10-27 13:00:31.930702
++edit the file Readme_David and write "David Kvinikadze". 
+
+# 2025-10-27 13:01:48.723237
++y
+
+# 2025-10-27 13:04:32.597484
++exit
+
+# 2025-10-27 13:04:53.411211
++exit()
+
+# 2025-10-27 13:05:26.971890
++.q
+
+# 2025-10-27 13:07:52.685029
++n
+
+# 2025-10-27 13:08:55.925962
++update the file ReadMe_David.md and write the following : "Firstname: David Lastname:  Kvinikadze"
+
+# 2025-10-27 13:09:18.172990
++y
+
+# 2025-10-27 13:10:57.537663
++n
+
+# 2025-10-27 13:11:35.808191
++edit the file Readme_David.md. write "firstname lastname" inside it
+
+# 2025-10-27 13:11:38.630307
++y
+
+# 2025-10-27 13:13:05.231930
++n
+
+# 2025-10-27 13:13:33.213951
++edit the file ReadMe_David.md. white "firstname latname" inside it.
+
+# 2025-10-27 13:13:39.981307
++n
+
+# 2025-10-27 13:16:47.524604
++edit the Readme_David.md and write: firstname lastname" inside it
+
+# 2025-10-27 13:16:51.813990
++y
+
+# 2025-10-27 13:19:31.241017
++add todays date to ther same file
+
+# 2025-11-03 16:59:12.379198
++odel
+
+# 2025-11-03 16:59:12.379198
++odel
+
+# 2025-11-04 18:26:55.202485
++Create a Company Home Page (dashboard) for users with user_type="company".
++ Use the existing base.html and follow the projects clean, academic style.
++Requirements: Add a view company_home(request) that: Requires login and restricts to user_type="company". Fetches recent or filtered Project objects (filter by GET params q and field). Renders company_home.html.
++
++
++Add a URL path "company/home/" named company_home.
++
++
++Template company_home.html:
++
++
++{% extends "base.html" %}
++
++
++Hero header: Welcome {{ request.user.username }}
++
++
++Subtitle: Discover student projects and research collaborations.
++
++
++Quick-action cards: Browse Projects, Saved Projects, Edit Profile.
++
++
++Search + filter bar (uses GET).
++
++
++Grid of project cards (title, field, description, View Details, Express Interest).
++
++
++No projects found message if empty.
++
++
++Responsive, minimal CSS consistent with the site.
++
++
++Show the new views.py, urls.py, and company_home.html code only, with short comments.
+
+# 2025-11-04 18:26:59.414105
++y
+
+# 2025-11-04 18:30:29.676665
++add the new template file that you requested: "templates/pages/company_home.html"
+
+# 2025-11-04 18:32:04.207915
++y
+
+# 2025-11-04 18:50:19.166427
++when I log in as a company, it does not take me to the company home page. This means that it does not open the company_home.html.
+
+# 2025-11-04 18:50:31.771672
++y
+
+# 2025-11-04 18:56:23.000869
++when the program askes me about my role, and I choose the role, it does should ask me to log in first and get my email and password. after that It should take me to the companies page only if I am loged in as a company. Right now it immidiately takes me to the companies' home page regardles of what role I choose. 
+
+# 2025-11-04 18:58:51.671710
++y
