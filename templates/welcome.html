@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block body %}
+{% block content %}
 <style>
     :root {
       --bg: #f5f7fb;
@@ -29,7 +29,6 @@
 
     * { box-sizing: border-box; }
     
-    /* These styles apply to the body tag for the welcome page only. */
     html, body { height: 100%; }
     body {
       margin: 0;
@@ -105,18 +104,11 @@
       text-decoration: underline;
     }
 </style>
+
 <main class="card">
   <div class="logo">DH</div>
   <h1>Welcome to Discovery Hub</h1>
   <p class="sub">Connecting innovators, companies, and universities.</p>
 
   <div class="role-buttons">
-    <a href="{% url 'register' %}?type=university">I am a University</a>
-    <a href="{% url 'register' %}?type=company">I am a Company</a>
-  </div>
-
-  <p class="hint">Already have an account?
-    <a href="{% url 'login' %}" class="text-link">Log in</a>
-  </p>
-</main>
-{% endblock body %}
+    <a href="{% url 'register' %}?type=university">I am a University</
