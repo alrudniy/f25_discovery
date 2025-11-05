@@ -2,6 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from .views import RegisterView, CustomLoginView
+from .forms import CustomPasswordResetForm
 
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
@@ -9,7 +10,10 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
 
     path('password_reset/',
-         auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_form.html'),
+         auth_views.PasswordResetView.as_view(
+             template_name='accounts/password_reset_form.html',
+             form_class=CustomPasswordResetForm
+         ),
          name='password_reset'),
 
     path('password_reset/done/',
