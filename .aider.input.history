@@ -355,3 +355,27 @@
 
 # 2025-11-05 16:24:21.020138
 +without changing anything- can you write me a message summarizing the changes I have made in this session before i commit and push and sync
+
+# 2025-11-05 17:40:24.573559
++when I get this screen: http://127.0.0.1:8000/accounts/password_reset/done/ I already entered my email but did not get anything emailed to me, how can we fix this?
+
+# 2025-11-05 17:40:27.004515
++y
+
+# 2025-11-05 17:43:53.370111
++okay, but even during development, I need to be able to test this functionally. in the current http://127.0.0.1:8000/accounts/password_reset/done/ screen the only button given is "return to Log In" I need to be able to get a code even if it is in the console a place to verify this code in the screen and then another screen that gives me the option to make a new password nd check it twice to ensure it matches and meets the password requiremets: Enforce password strength guidelines :
++Must be at least 12 characters long.
++Must include at least 1 number.
++The last character can not be numeric.
++Must have at least 1 symbol (non letter or number) character.
++Must not repeat any character sequentially more than 4 times &
++New password may not have been used previously.
+
+# 2025-11-05 17:43:55.341117
++y
+
+# 2025-11-05 18:43:20.212578
++in this screen http://127.0.0.1:8000/accounts/password_reset/, can you ensure that if a user enter an email that does not have an account it should provide an error saying this email is not associated with any account
+
+# 2025-11-05 18:43:21.814188
++y
