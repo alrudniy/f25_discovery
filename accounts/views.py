@@ -27,7 +27,23 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
+<<<<<<< Updated upstream
+=======
+        if not self.request.user.is_authenticated:
+            return reverse_lazy('login')  # safety check
+
+        user_type = self.request.user.user_type
+        
+        if user_type == User.UserType.COMPANY:
+            return reverse_lazy('company_home')
+        elif user_type == User.UserType.UNIVERSITY:
+            return reverse_lazy('university_home')  # 👈 new line for universities
+        elif user_type == User.UserType.INVESTOR:
+            return reverse_lazy('investor_home')
+    # fallback
+>>>>>>> Stashed changes
         return reverse_lazy('screen1')
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

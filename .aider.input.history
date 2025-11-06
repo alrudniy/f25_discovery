@@ -1,0 +1,48 @@
+
+# 2025-10-28 13:03:49.285676
++Modify ReadMe_BrendaMadrid.md by adding the following text "Hello Brenda, this line was added using Gemini"
+
+# 2025-10-28 13:03:52.852449
++y
+
+# 2025-10-28 13:12:47.730394
++rename the branch "bewnda_feature2" to ""Brenda_feature2"
+
+# 2025-10-28 13:13:09.126257
++/run git branch -m bewnda_feature2 Brenda_feature2
+
+# 2025-10-28 13:13:09.126257
++/run git branch -m bewnda_feature2 Brenda_feature2
+
+# 2025-10-28 13:13:59.072089
++update the branch "bewnda_feature2" to "brenda_feature2"
+
+# 2025-10-28 13:14:12.379193
++/run git branch -m bewnda_feature2 brenda_feature2
+
+# 2025-10-28 13:14:12.379193
++/run git branch -m bewnda_feature2 brenda_feature2
+
+# 2025-11-05 17:16:41.650195
++Screens 1, 2 and 3 appear to be connected to the wrong account (ie the admin account). Is there a way to fix this? 
+
+# 2025-11-05 17:32:17.319707
++University screens are connected to the wrong account. They are connected to the admin account instead. Change it so that they are connected to the university account
+
+# 2025-11-05 18:06:00.843517
++Edit the code so that when someone visits /university/home/ Django will load the university home view
+
+# 2025-11-05 18:07:18.021685
++Edit the code so that when someone visits /university/home/ Django will load the university home view         
++Here is the link to the webapp: http://127.0.0.1:8000/screen1/
+
+# 2025-11-05 18:13:33.560706
++Edit the code so that when someone visits /university/home/, Django will load the university_home view
+
+# 2025-11-05 18:22:00.777679
++I am creating a web app. Here is the link: http://127.0.0.1:8000/screen1/. 
++Edit the code so that when someone visits /university/home/, Django will load the university_home view         
++
+
+# 2025-11-05 19:18:41.553157
++For the university account change the dashboard so that it reads "Welcome University" instead of Screen 1 University
