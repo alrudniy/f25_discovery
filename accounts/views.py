@@ -25,21 +25,11 @@ class RegisterView(FormView):
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
     authentication_form = EmailAuthenticationForm
-    redirect_authenticated_user = True
+    redirect_authenticated_user = False
 
     def get_success_url(self):
-        if not self.request.user.is_authenticated:
-            return reverse_lazy('login')  # safety check
-
-        user_type = self.request.user.user_type
-        
-        if user_type == User.UserType.COMPANY:
+        if self.request.user.is_authenticated and self.request.user.user_type == User.UserType.COMPANY:
             return reverse_lazy('company_home')
-        elif user_type == User.UserType.UNIVERSITY:
-            return reverse_lazy('university_home')  # 👈 new line for universities
-        elif user_type == User.UserType.INVESTOR:
-            return reverse_lazy('investor_home')
-    # fallback
         return reverse_lazy('screen1')
 
 
