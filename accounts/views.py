@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from .forms import UserRegistrationForm, EmailAuthenticationForm
+from .models import User
 
 class RegisterView(FormView):
     template_name = 'accounts/register.html'
@@ -27,11 +28,6 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
         if not self.request.user.is_authenticated:
             return reverse_lazy('login')  # safety check
 
@@ -44,10 +40,6 @@ class CustomLoginView(LoginView):
         elif user_type == User.UserType.INVESTOR:
             return reverse_lazy('investor_home')
     # fallback
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         return reverse_lazy('screen1')
 
 
