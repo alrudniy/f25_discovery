@@ -32,6 +32,7 @@ class CustomLoginView(LoginView):
             return reverse_lazy('company_home')
         return reverse_lazy('screen1')
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user_type = self.request.GET.get('type')
