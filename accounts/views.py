@@ -28,7 +28,10 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         if not self.request.user.is_authenticated:
             return reverse_lazy('login')  # safety check
 
@@ -41,6 +44,9 @@ class CustomLoginView(LoginView):
         elif user_type == User.UserType.INVESTOR:
             return reverse_lazy('investor_home')
     # fallback
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         return reverse_lazy('screen1')
 
