@@ -5,10 +5,6 @@ from .views import RegisterView, CustomLoginView
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
-<<<<<<< HEAD
-    path('logout/', LogoutView.as_view(), name='logout'),
-
-=======
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('password_reset/',
          auth_views.PasswordResetView.as_view(
@@ -30,5 +26,4 @@ urlpatterns = [
              template_name='accounts/password_reset_complete.html'
          ),
          name='password_reset_complete'),
->>>>>>> 51beabdb6478770a4441e74175386d4f01bbe28d
 ]
