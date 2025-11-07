@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+  <h1>Welcome {{ request.user.username }}</h1> {# Hero header #}
+  <p class="subtitle">Discover student projects and research collaborations.</p> {# Subtitle #}
+</div>
+
+<div class="card-grid quick-actions">
+  <div class="card action-card">
+    <h3>Browse Projects</h3>
+    <p>Explore a wide range of innovative student projects.</p>
+    <a href="{% url 'company_home' %}" class="btn">Go</a> {# Link back to itself for browsing #}
+  </div>
+  <div class="card action-card">
+    <h3>Saved Projects</h3>
+    <p>View projects you've bookmarked for future reference.</p>
+    <a href="#" class="btn">Go</a> {# Placeholder link #}
+  </div>
+  <div class="card action-card">
+    <h3>Edit Profile</h3>
+    <p>Update your company's profile and contact information.</p>
+    <a href="#" class="btn">Go</a> {# Placeholder link #}
+  </div>
+</div>
+
+<div class="search-filter-bar">
+  <form method="GET" class="search-form">
+    <input type="text" name="q" placeholder="Search projects by title or description..." value="{{ current_query }}">
+    <select name="field">
+      {% for field_option in available_fields %}
+        <option value="{{ field_option }}" {% if current_field|lower == field_option|lower %}selected{% endif %}>
+          {% if field_option == 'All' %}All Fields{% else %}{{ field_option }}{% endif %}
+        </option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+
+<h2>Available Projects</h2>
+{% if projects %}
+  <div class="project-grid">
+    {% for project in projects %}
+      <div class="project-card card">
+        <h3>{{ project.title }}</h3>
+        <p class="project-field">{{ project.field }}</p>
+        <p class="project-description">{{ project.description }}</p>
+        <div class="card-actions">
+          <a href="#" class="btn btn-secondary">View Details</a> {# Placeholder link #}
+          <a href="#" class="btn btn-primary">Express Interest</a> {# Placeholder link #}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No projects found matching your criteria.</p>
+{% endif %}
+{% endblock content %}

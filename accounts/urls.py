@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.views import LogoutView
 from .views import RegisterView, CustomLoginView
 
@@ -6,4 +6,6 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='logout'),
+
+    path('university/', include('universityAccount.urls')),
 ]
