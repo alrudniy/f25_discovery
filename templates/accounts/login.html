@@ -129,6 +129,21 @@
     a.text-link:hover {
       text-decoration: underline;
     }
+
+    .password-wrapper {
+      position: relative;
+    }
+    .form-group .password-wrapper input {
+      padding-right: 40px;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--muted);
+    }
 </style>
 {% endblock styles %}
 
@@ -151,7 +166,13 @@
 
     <div class="form-group">
       <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
-      {{ form.password }}
+      <div class="password-wrapper">
+        {{ form.password }}
+        <span id="togglePassword" class="toggle-password">
+          <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+        </span>
+      </div>
       {% if form.password.errors %}<div class="error">{{ form.password.errors.0 }}</div>{% endif %}
       <div style="text-align: right; font-size: 0.9rem; margin-top: 0.5rem;">
         <a href="{% url 'password_reset' %}" class="text-link">Forgot Password?</a>
@@ -165,4 +186,22 @@
     <a href="{% url 'register' %}{% if selected_user_type %}?type={{ selected_user_type }}{% endif %}" class="text-link">Create one</a>
   </p>
 </main>
+<script>
+  const togglePassword = document.getElementById('togglePassword');
+  const password = document.getElementById('id_password');
+  const eyeOpen = document.getElementById('eye-open');
+  const eyeClosed = document.getElementById('eye-closed');
+
+  togglePassword.addEventListener('click', function () {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    if (type === 'password') {
+      eyeOpen.style.display = 'block';
+      eyeClosed.style.display = 'none';
+    } else {
+      eyeOpen.style.display = 'none';
+      eyeClosed.style.display = 'block';
+    }
+  });
+</script>
 {% endblock body %}
