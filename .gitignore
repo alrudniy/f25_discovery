@@ -9,3 +9,4 @@ ENV/
 env/
 .DS_Store
 .aider*
+.aider.tags.cache.v4/
