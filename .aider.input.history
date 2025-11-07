@@ -79,3 +79,35 @@
 
 # 2025-11-07 14:32:06.037855
 +y
+
+# 2025-11-07 14:46:43.231539
++I got an error when I run the program " File "<frozen importlib._bootstrap>", line 1398, in _gcd_import
++  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
++  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
++  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
++  File "<frozen importlib._bootstrap_external>", line 758, in exec_module
++  File "<frozen importlib._bootstrap_external>", line 896, in get_code
++  File "<frozen importlib._bootstrap_external>", line 826, in source_to_code
++  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
++  File "C:\Users\admin\Desktop\soft eng\Discovery_hub\f25_discovery\accounts\urls.py", line 33
++    >>>>>>> 51beabdb6478770a4441e74175386d4f01bbe28d
++             ^
++SyntaxError: invalid decimal literal" 
+
+# 2025-11-07 14:46:56.590379
++y
+
+# 2025-11-07 14:49:22.167408
++correct the syntaax error in accounts urls.py
+
+# 2025-11-07 14:50:47.093208
++y
+
+# 2025-11-07 14:51:56.869656
++yes
+
+# 2025-11-07 14:53:00.167466
++take a look at ursl.py remove duplicate lines. 
+
+# 2025-11-07 14:53:54.025631
++y
