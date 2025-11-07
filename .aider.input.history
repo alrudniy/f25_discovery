@@ -22,3 +22,36 @@
 
 # 2025-10-28 13:14:12.379193
 +/run git branch -m bewnda_feature2 brenda_feature2
+
+# 2025-11-07 14:10:00.847063
++remove the venvvenv folder from the directory since I'm not using it
+
+# 2025-11-07 14:10:52.575832
++y
+
+# 2025-11-07 14:10:52.591587
++/run rmdir /s /q venvvenv
+
+# 2025-11-07 14:10:52.591587
++/run rmdir /s /q venvvenv
+
+# 2025-11-07 14:10:59.252164
++y
+
+# 2025-11-07 14:11:11.332961
++the venvvenv folder is still there
+
+# 2025-11-07 14:11:22.519749
++y
+
+# 2025-11-07 14:11:22.519749
++/run Remove-Item -Recurse -Force venvvenv
+
+# 2025-11-07 14:11:22.519749
++/run Remove-Item -Recurse -Force venvvenv
+
+# 2025-11-07 14:12:07.210818
++remove the tests files from pages and accounts folders, since I have separate tests folder in my directory.
+
+# 2025-11-07 14:12:22.481617
++y
