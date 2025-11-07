@@ -2,6 +2,31 @@
 
 {% block styles %}
 <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-600: #1d4ed8;
+      --ring: rgba(37, 99, 235, 0.25);
+      --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-600: #2563eb;
+        --ring: rgba(59, 130, 246, 0.35);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+    }
+
     * { box-sizing: border-box; }
 
     html, body { height: 100%; }
