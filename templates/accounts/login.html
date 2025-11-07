@@ -11,11 +11,11 @@
       </div>
       <div class="form-field">
         <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
-        <div class="password-wrapper">
-          {{ form.password }}
-          <button type="button" class="password-toggle" aria-label="Show password">Show</button>
-        </div>
+        {{ form.password }}
         {% if form.password.errors %}<div class="error">{{ form.password.errors.0 }}</div>{% endif %}
+        <div style="text-align: right; margin-top: 0.5rem; font-size: 0.9em;">
+          <a href="{% url 'password_reset' %}">Forgot password?</a>
+        </div>
       </div>
       <button class="btn primary" type="submit">Sign in</button>
     </form>

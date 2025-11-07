@@ -23,20 +23,3 @@ fieldset.form-field { border:1px solid #e5e7eb; border-radius:.6rem; padding:.75
 .error { color:#b91c1c; font-size:.9rem; margin-top:.25rem; }
 .messages { list-style:none; padding:0; }
 .messages li { background:#ecfeff; border:1px solid #22d3ee; color:#0e7490; padding:.6rem .9rem; border-radius:.5rem; margin:.5rem 0; }
-
-.password-wrapper {
-  position: relative;
-}
-.password-toggle {
-  position: absolute;
-  top: 50%;
-  right: 0.5rem;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.4rem;
-  color: #475569;
-  font-size: 0.8rem;
-  font-weight: bold;
-}

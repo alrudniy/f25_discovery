@@ -1,7 +1,5 @@
-from django.shortcuts import render, redirect # Add redirect for unauthorized access
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from accounts.models import User # Import User model to check user_type
-
 
 def welcome(request):
     return render(request, 'pages/welcome.html')
