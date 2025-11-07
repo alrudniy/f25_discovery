@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,7 @@ ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '127.0.0.1,localh
 INSTALLED_APPS = [
     'django.contrib.admin','django.contrib.auth','django.contrib.contenttypes',
     'django.contrib.sessions','django.contrib.messages','django.contrib.staticfiles',
-    'accounts','pages',
+    'accounts','pages','tests',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,13 @@ DATABASES = {
     }
 }
 
+# Use in-memory SQLite database for testing to avoid permission issues and for speed.
+if 'test' in sys.argv or 'test' == os.environ.get('DJANGO_ENV'):
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    }
+
 AUTH_USER_MODEL = 'accounts.User'
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -75,3 +83,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'screen1'
 LOGOUT_REDIRECT_URL = 'login'
+
+# For development, emails can be printed to console by uncommenting the line below
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# For sending real emails via SMTP
+# To enable email sending, you must configure an SMTP server by setting the
+# following environment variables in your .env file.
+#
+# Example for Gmail:
+# EMAIL_HOST=smtp.gmail.com
+# EMAIL_PORT=587
+# EMAIL_USE_TLS=True
+# EMAIL_HOST_USER=your_email@gmail.com
+# EMAIL_HOST_PASSWORD=your_gmail_app_password
+# DEFAULT_FROM_EMAIL=your_email@gmail.com
+#
+# Note: For services like Gmail, you may need to generate an "App Password"
+# instead of using your regular account password due to security measures.
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
