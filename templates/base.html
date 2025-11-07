@@ -7,9 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-600: #1d4ed8;
+      --ring: rgba(37, 99, 235, 0.25);
+      --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --primary: #3b82f6;
+        --primary-600: #2563eb;
+        --ring: rgba(59, 130, 246, 0.35);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+    }
+    .authenticated-page {
+      background: radial-gradient(1200px 600px at 50% -100px, rgba(37,99,235,.1), transparent 70%), var(--bg);
+    }
+  </style>
   {% block styles %}{% endblock %}
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 {% if user.is_authenticated %}authenticated-page{% endif %}">
   {% block body %}
     {% block header %}
   <header class="bg-white shadow-sm sticky top-0 z-50">
