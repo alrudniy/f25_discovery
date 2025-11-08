@@ -7,8 +7,12 @@
   <title>Discovery Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  {% block styles %}{% endblock %}
 </head>
 <body>
+  {% block body %}
+    {% block header %}
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
@@ -38,6 +42,7 @@
       </nav>
     </div>
   </header>
+  {% endblock header %}
 
   <div class="container" style="display: flex; gap: 2rem;">
     <aside style="width: 200px; flex-shrink: 0;">
@@ -61,10 +66,13 @@
     </main>
   </div>
 
+  {% block footer %}
   <footer class="site-footer">
     <div class="container">
       <small>&copy; {% now "Y" %} Discovery Hub</small>
     </div>
   </footer>
+  {% endblock footer %}
+  {% endblock body %}
 </body>
 </html>

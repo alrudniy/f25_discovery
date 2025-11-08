@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 def welcome(request):
-    return render(request, 'pages/welcome.html')
+    return render(request, 'welcome.html')
 
 @login_required
 def screen1(request):
