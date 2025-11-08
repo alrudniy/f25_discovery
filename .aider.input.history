@@ -400,3 +400,76 @@
 
 # 2025-11-07 12:59:27.341413
 +this did not revert the colors, like on http://127.0.0.1:8000/ the background is white but it used to be a nice blue gradient
+
+# 2025-11-07 16:33:23.189931
++I need to complete these tasks: Work with your local branch
++Create folder tests
++Create one simple test following instructions in the video.
++Run this test as in the video.
++Add a new task for you to GitHub  Projects  Backlog. This task must have a good description of an actual test  that you are about to write and complete.
++Assign the task to yourself.
++Code the test. Run the test.
++Push the new code to your remote branch in GitHub.
++Submit a screenshot of your branch in GitHub showing the tests folder expanded and its content.
++I also need to take the most important and applicate steps from this tutorial: https://www.youtube.com/watch?v=0MrgsYswT1c
++
+
+# 2025-11-07 16:33:25.695074
++y
+
+# 2025-11-07 16:40:43.871280
++can we run the test and send me the descriptioon
+
+# 2025-11-07 16:40:56.992276
++/run .venv\Scripts\python.exe manage.py test pages
+
+# 2025-11-07 16:40:56.992276
++/run .venv\Scripts\python.exe manage.py test pages
+
+# 2025-11-07 16:44:20.100104
++did u run the test?
+
+# 2025-11-07 17:10:21.069772
++why do you think i cannot activate the mkvirtualenv
+
+# 2025-11-07 17:10:24.597874
++/run .venv\Scripts\activate
+
+# 2025-11-07 17:10:24.598909
++/run .venv\Scripts\activate
+
+# 2025-11-07 17:10:30.573957
++/run python manage.py test pages
+
+# 2025-11-07 17:10:30.573957
++/run python manage.py test pages
+
+# 2025-11-07 17:10:53.501394
++I need to be able to activate the mkvirtualenv in my cmd terminal
+
+# 2025-11-07 17:36:42.638981
++I get thir erros ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment? when I run python manage.py test pages
+
+# 2025-11-07 19:59:58.505255
++I need help running the tests folder, what is the command I need to use in cmd line?
+
+# 2025-11-07 20:00:55.856831
++/run .venv\Scripts\python.exe manage.py test
+
+# 2025-11-07 20:00:55.856831
++/run .venv\Scripts\python.exe manage.py test
+
+# 2025-11-07 20:01:02.565279
++/run .venv\Scripts\python.exe manage.py test accounts
+
+# 2025-11-07 20:01:02.566279
++/run .venv\Scripts\python.exe manage.py test accounts
+
+# 2025-11-07 20:01:33.052304
++i am essentually trying to run the test_urls.py from the test folder within pages folder.. perhabs this folder should be elsewhere?
+
+# 2025-11-07 20:01:53.888412
++test test_urls.py
+
+# 2025-11-07 20:02:53.523482
++n

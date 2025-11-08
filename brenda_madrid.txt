@@ -1,1 +1,5 @@
-brenda
+venv\Scripts\activate
+python manage.py runserver
+
+
+aider --model gemini
