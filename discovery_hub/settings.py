@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,7 @@ ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '127.0.0.1,localh
 INSTALLED_APPS = [
     'django.contrib.admin','django.contrib.auth','django.contrib.contenttypes',
     'django.contrib.sessions','django.contrib.messages','django.contrib.staticfiles',
-    'accounts','pages',
+    'accounts','pages','tests',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,13 @@ DATABASES = {
         'CONN_MAX_AGE': 60,
     }
 }
+
+# Use in-memory SQLite database for testing to avoid permission issues and for speed.
+if 'test' in sys.argv or 'test' == os.environ.get('DJANGO_ENV'):
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    }
 
 AUTH_USER_MODEL = 'accounts.User'
 

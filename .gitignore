@@ -8,3 +8,6 @@ __pycache__/
 venv/
 ENV/
 env/
+.DS_Store
+.aider*
+.aider.tags.cache.v4/
