@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -7,7 +7,7 @@ urlpatterns = [
     path('screen2/', views.screen2, name='screen2'),
     path('screen3/', views.screen3, name='screen3'),
     path('notifications/', views.notifications, name='notifications'), # added for notifications page, 
-    #path('university/', include('universityAccount.urls')),
+    path('university/', include('universityAccount.urls')),
     # URL for the Company Home Page (Dashboard)
     path('company/home/', views.company_home, name='company_home'),
 ]
