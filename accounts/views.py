@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from .forms import UserRegistrationForm, EmailAuthenticationForm
+from accounts.models import User
 
 class RegisterView(FormView):
     template_name = 'accounts/register.html'
