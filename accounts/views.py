@@ -27,6 +27,8 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
+        if self.request.user.is_authenticated and self.request.user.user_type == User.UserType.COMPANY:
+            return reverse_lazy('company_home')
         return reverse_lazy('screen1')
 
     def get_context_data(self, **kwargs):
