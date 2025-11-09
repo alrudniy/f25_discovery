@@ -38,6 +38,20 @@ def notifications(request): # added for notifications page
     return render(request, 'pages/notifications.html', context)
 
 @login_required
+def university_home(request):
+    # Restrict access to only university users
+    if request.user.user_type != User.UserType.UNIVERSITY:
+        return redirect('screen1')  # Redirect if not a university user
+
+    # Placeholder context for university_home.html
+    context = {
+        'university_name': request.user.username.title() if request.user.is_authenticated else 'University',
+        # Add any other data relevant to university users here
+    }
+    return render(request, 'pages/university_home.html', context)
+
+
+@login_required
 def company_home(request):
     # Restrict access to only company users
     if request.user.user_type != User.UserType.COMPANY:
