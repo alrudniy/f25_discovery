@@ -19,9 +19,9 @@
       <nav>
         <ul class="nav">
           {% if user.is_authenticated %}
-            <li><a href="{% url 'screen1' %}">Screen 1</a></li>
-            <li><a href="{% url 'screen2' %}">Screen 2</a></li>
-            <li><a href="{% url 'screen3' %}">Screen 3</a></li>
+            <li><a href="{% url 'screen1' %}">Screen&nbsp;1</a></li>
+            <li><a href="{% url 'screen2' %}">Screen&nbsp;2</a></li>
+            <li><a href="{% url 'screen3' %}">Screen&nbsp;3</a></li>
             <li><a href="{% url 'notifications' %}">Notifications</a></li>
             {% if user.user_type == 'company' %}
               <li><a href="{% url 'company_home' %}">Company Home</a></li>
