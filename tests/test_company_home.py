@@ -73,7 +73,7 @@ class CompanyHomeTests(TestCase):
         self.assertTemplateUsed(response, 'pages/company_home.html')
         self.assertContains(response, 'Welcome, companyuser!') # Example welcome message
         self.assertContains(response, '<input type="search"', html=True) # Search bar
-        self.assertContains(response, 'id="project-list"', html=True) # Assuming a div for project list
+        self.assertContains(response, 'id="project-list"') # Assuming a div for project list
         self.client.logout()
 
     def test_company_home_empty_result_handling(self):
