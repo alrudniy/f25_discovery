@@ -41,7 +41,7 @@ def notifications(request): # added for notifications page
 def company_home(request):
     # Restrict access to only company users
     if request.user.user_type != User.UserType.COMPANY:
-        return redirect('welcome') # Redirect if not a company user
+        return redirect('screen1') # Redirect if not a company user
 
     # Placeholder for Project objects.
     # In a real application, you would import and query your Project model here.
