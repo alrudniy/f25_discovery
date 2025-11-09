@@ -24,7 +24,7 @@
             <li><a href="{% url 'screen3' %}">Screen&nbsp;3</a></li>
             <li><a href="{% url 'notifications' %}">Notifications</a></li>
             {% if user.user_type == 'company' %}
-              <li><a href="{% url 'company_home' %}">Company Home</a></li>
+              <li><a href="{% url 'company_home' %}">Company&nbsp;Home</a></li>
             {% else %}
               <li><a href="{% url 'screen1' %}">Home Page</a></li>
               <li><a href="{% url 'screen2' %}">View Research</a></li>
