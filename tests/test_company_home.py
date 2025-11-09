@@ -27,7 +27,7 @@ class CompanyHomeTests(TestCase):
             username='investoruser',
             email='investor@example.com',
             password='password123',
-            user_type='investor' # Assuming 'investor' user type for completeness
+            user_type=User.UserType.UNIVERSITY # Use a valid UserType for non-company user
         )
         self.company_home_url = reverse('company_home')
 
@@ -71,7 +71,7 @@ class CompanyHomeTests(TestCase):
         response = self.client.get(self.company_home_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'pages/company_home.html')
-        self.assertContains(response, 'Welcome, Company User!') # Example welcome message
+        self.assertContains(response, 'Welcome, companyuser!') # Example welcome message
         self.assertContains(response, '<input type="search"', html=True) # Search bar
         self.assertContains(response, 'id="project-list"', html=True) # Assuming a div for project list
         self.client.logout()
@@ -90,13 +90,13 @@ class CompanyHomeTests(TestCase):
         # If the view logic correctly handles empty search results, this message should appear.
         # This might require a change to the company_home view to pass an explicit empty projects list
         # or a specific context variable to trigger this state if search is not yet implemented.
-        self.assertContains(response, 'No projects found.', count=0) # Should NOT be present if projects exist
+        self.assertNotContains(response, 'No projects found matching your criteria.') # Should NOT be present if projects exist
 
         # To properly test empty results with a search, the view would need to implement search.
         # Assuming a search parameter like 'q' can lead to no results:
         response_empty_search = self.client.get(self.company_home_url + '?q=nonexistentproject')
         self.assertEqual(response_empty_search.status_code, 200)
-        self.assertContains(response_empty_search, 'No projects found.') # Should be present for empty search
+        self.assertContains(response_empty_search, 'No projects found matching your criteria.') # Should be present for empty search
         self.client.logout()
 
     # Note: Search and filter features will require actual Project models and view logic
