@@ -385,3 +385,66 @@
 
 # 2025-11-07 12:42:33.632881
 +y
+
+# 2025-11-09 00:10:28.439878
++Create a Company Home Page (dashboard) for users with user_type="company".
++Use the existing base.html and follow the projects clean, academic style.
++
++Requirements:
++
++Add a view company_home(request) that:
++
++Requires login and restricts to user_type="company".
++
++Fetches recent or filtered Project objects (filter by GET params q and field).
++
++Renders company_home.html.
++
++Add a URL path "company/home/" named company_home.
++
++Template company_home.html:
++
++{% extends "base.html" %}
++
++Hero header: Welcome {{ request.user.username }}
++
++Subtitle: Discover student projects and research collaborations.
++
++Quick-action cards: Browse Projects, Saved Projects, Edit Profile.
++
++Search + filter bar (uses GET).
++
++Grid of project cards (title, field, description, View Details, Express Interest).
++
++No projects found message if empty.
++
++Responsive, minimal CSS consistent with the site.
++
++Show the new views.py, urls.py, and company_home.html code only, with short comments. also pay attention that the configuration is good and the program takes you to companies home page after the user logs in as the company. 
+
+# 2025-11-09 00:10:32.010453
++y
+
+# 2025-11-09 00:20:14.379155
++screen 1, screen 2 and screen 3 look bad because screen is written on one line and 2 is written on the other one. fic it
+
+# 2025-11-09 00:21:19.828418
++on the left side, it shows weird stuff like file directories. Files
++pages/views.py
++pages/urls.py
++templates/base.html
++pages/templates/pages/notifications.html
++Welcome, company@drew.edu!
++can you removeit ?
+
+# 2025-11-09 00:21:23.209564
++y
+
+# 2025-11-09 00:24:52.344479
++on the top where it says Company Home it needs to be fixed they are written in two lines
+
+# 2025-11-09 00:26:37.947649
++write descovery hub logo on the left side so that it is separate.
+
+# 2025-11-09 00:32:03.665606
++I see # added for notifications page at the top left part of the page. PLease remove it from there. 
