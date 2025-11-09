@@ -31,7 +31,7 @@
               <li><a href="{% url 'screen3' %}">Match with others</a></li>
             {% endif %}
             <li class="divider"></li>
-            <li class="muted">Hi, {{ user.display_name }}</li>
+            <li class="muted">Hello,&nbsp;{{ user.display_name }}</li>
             <li>
               <form method="post" action="{% url 'logout' %}" style="display:inline">
                 {% csrf_token %}
