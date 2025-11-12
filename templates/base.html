@@ -1,4 +1,3 @@
-# added for notifications page
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -15,19 +14,23 @@
     {% block header %}
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="{% url 'welcome' %}">Discovery Hub</a>
+      <a class="brand" href="{% url 'welcome' %}">Discovery&nbsp;Hub</a>
       <nav>
         <ul class="nav">
           {% if user.is_authenticated %}
-            <li><a href="{% url 'screen1' %}">Screen 1</a></li>
-            <li><a href="{% url 'screen2' %}">Screen 2</a></li>
-            <li><a href="{% url 'screen3' %}">Screen 3</a></li>
+            <li><a href="{% url 'screen1' %}">Screen&nbsp;1</a></li>
+            <li><a href="{% url 'screen2' %}">Screen&nbsp;2</a></li>
+            <li><a href="{% url 'screen3' %}">Screen&nbsp;3</a></li>
             <li><a href="{% url 'notifications' %}">Notifications</a></li>
-            <li><a href="{% url 'screen1' %}">Home Page</a></li>
-            <li><a href="{% url 'screen2' %}">View Research</a></li>
-            <li><a href="{% url 'screen3' %}">Match with others</a></li>
+            {% if user.user_type == 'company' %}
+              <li><a href="{% url 'company_home' %}">Company&nbsp;Home</a></li>
+            {% else %}
+              <li><a href="{% url 'screen1' %}">Home Page</a></li>
+              <li><a href="{% url 'screen2' %}">View Research</a></li>
+              <li><a href="{% url 'screen3' %}">Match with others</a></li>
+            {% endif %}
             <li class="divider"></li>
-            <li class="muted">Hi, {{ user.display_name }}</li>
+            <li class="muted">Hello,&nbsp;{{ user.display_name }}!</li>
             <li>
               <form method="post" action="{% url 'logout' %}" style="display:inline">
                 {% csrf_token %}
@@ -44,17 +47,8 @@
   </header>
   {% endblock header %}
 
-  <div class="container" style="display: flex; gap: 2rem;">
-    <aside style="width: 200px; flex-shrink: 0;">
-      <h4>Files</h4>
-      <ul style="list-style-type: none; padding-left: 0;">
-        <li>pages/views.py</li>
-        <li>pages/urls.py</li>
-        <li>templates/base.html</li>
-        <li>pages/templates/pages/notifications.html</li>
-      </ul>
-    </aside>
-    <main style="flex-grow: 1;">
+  <div class="container">
+    <main>
       {% if messages %}
         <ul class="messages">
           {% for message in messages %}
