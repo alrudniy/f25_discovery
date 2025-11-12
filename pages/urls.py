@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from . import buggy_view   # <-- add this import
 urlpatterns = [
     path('', views.welcome, name='welcome'),
     path('screen1/', views.screen1, name='screen1'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('notifications/', views.notifications, name='notifications'), # added for notifications page, 
     # URL for the Company Home Page (Dashboard)
     path('company/home/', views.company_home, name='company_home'),
+    path('buggy/', buggy_view.buggy_search, name='buggy_search'),
 ]
