@@ -630,9 +630,9 @@ def main():
 
     print("\\n>> All set.")
     if is_windows():
-        print("   Start server: .venv\\Scripts\\python manage.py runserver")
+        print(f"   Start server: {VENV_DIR}\\Scripts\\python manage.py runserver")
     else:
-        print("   Start server: source .venv/bin/activate && python manage.py runserver")
+        print(f"   Start server: source {VENV_DIR}/bin/activate && python manage.py runserver")
 
 if __name__ == "__main__":
     main()
