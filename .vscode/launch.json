@@ -7,11 +7,12 @@
       "request": "launch",
       "program": "${workspaceFolder}/manage.py",
       "python": "${workspaceFolder}/venv/Scripts/python.exe",
+      "cwd": "${workspaceFolder}", // Explicitly set current working directory
       "args": ["runserver", "127.0.0.1:8000"],
       "django": true,
       "envFile": "${workspaceFolder}/.env",
       "console": "integratedTerminal",
-      "justMyCode": true
+      "justMyCode": false
     },
     {
       "name": "Django: manage.py test (debug)",
@@ -23,7 +24,7 @@
       "django": true,
       "env": { "DJANGO_ENV": "test" },   // settings.py uses this to switch DB in tests
       "console": "integratedTerminal",
-      "justMyCode": true
+      "justMyCode": false
     }
   ]
 }
