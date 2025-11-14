@@ -28,7 +28,7 @@ from pathlib import Path
 from textwrap import dedent
 
 PROJECT = "discovery_hub"
-VENV_DIR = Path(".venv")
+VENV_DIR = Path("venv")
 
 def is_windows() -> bool:
     return os.name == "nt" or platform.system().lower().startswith("win")
