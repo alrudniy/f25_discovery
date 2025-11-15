@@ -567,3 +567,12 @@
 
 # 2025-11-09 16:15:26.520648
 +n
+
+# 2025-11-14 23:18:03.671606
++Where should I insert the breakpoint if I want to debug and see what the steps are in buggy_search function inside the buggy_view.py? 
+
+# 2025-11-14 23:18:06.472050
++y
+
+# 2025-11-14 23:19:54.034636
++I did it, but as soon as It reached the function, it skipped to go inside it.

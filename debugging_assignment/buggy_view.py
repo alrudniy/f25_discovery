@@ -21,14 +21,14 @@ def buggy_search(request):
     (3) KeyError: misspelled key 'descriptionn' in the predicate.
     """
     # ---- BUG 1: if 'q' is not provided, .strip() will raise AttributeError (NoneType has no attribute 'strip')
-    query = (request.GET.get('q') or "").strip()
-
+    print("Entered buggy_search function") # Added for debugging confirmation
+    query = request.GET.get('q').strip()
 
     field_filter = request.GET.get('field', 'All')
     projects = ALL_PROJECTS.copy()
 
     # ---- BUG 2: identity vs equality; 'is not "All"' can behave incorrectly; should be !=
-    if field_filter != 'All':
+    if field_filter is not 'All':
         projects = [p for p in projects if p['field'] == field_filter]
 
     # ---- BUG 3: misspelled key 'descriptionn' -> KeyError
@@ -43,3 +43,6 @@ def buggy_search(request):
         'current_query': query,
         'current_field': field_filter,
     })
+
+
+

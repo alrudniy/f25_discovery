@@ -15,25 +15,24 @@ ALL_PROJECTS = [
 def buggy_search(request):
     """
     Intentionally buggy view for VS Code debugging practice.
-
     Bugs to find:
     (1) AttributeError when 'q' is missing (calling .strip() on None).
     (2) Logic bug: using 'is' instead of '==' when checking the sentinel 'All'.
     (3) KeyError: misspelled key 'descriptionn' in the predicate.
     """
     # ---- BUG 1: if 'q' is not provided, .strip() will raise AttributeError (NoneType has no attribute 'strip')
-    query = request.GET.get('q').strip()
+    query = (request.GET.get('q') or "").strip()
 
     field_filter = request.GET.get('field', 'All')
     projects = ALL_PROJECTS.copy()
 
     # ---- BUG 2: identity vs equality; 'is not "All"' can behave incorrectly; should be !=
-    if field_filter is not 'All':
+    if field_filter != 'All':
         projects = [p for p in projects if p['field'] == field_filter]
 
     # ---- BUG 3: misspelled key 'descriptionn' -> KeyError
     def predicate(p):
-        return query.lower() in p['title'].lower() or query.lower() in p['descriptionn'].lower()
+        return query.lower() in p['title'].lower() or query.lower() in p['description'].lower()
 
     if query:
         projects = list(filter(predicate, projects))
@@ -43,3 +42,6 @@ def buggy_search(request):
         'current_query': query,
         'current_field': field_filter,
     })
+
+
+
