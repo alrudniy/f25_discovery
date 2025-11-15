@@ -22,6 +22,7 @@ def buggy_search(request):
     """
     # ---- BUG 1: if 'q' is not provided, .strip() will raise AttributeError (NoneType has no attribute 'strip')
     # Breakpoint here to start debugging the function
+    print("Entered buggy_search function") # Added for debugging confirmation
     query = request.GET.get('q').strip()
 
     field_filter = request.GET.get('field', 'All')
