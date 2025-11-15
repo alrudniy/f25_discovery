@@ -21,6 +21,7 @@ def buggy_search(request):
     (3) KeyError: misspelled key 'descriptionn' in the predicate.
     """
     # ---- BUG 1: if 'q' is not provided, .strip() will raise AttributeError (NoneType has no attribute 'strip')
+    # Breakpoint here to start debugging the function
     query = request.GET.get('q').strip()
 
     field_filter = request.GET.get('field', 'All')
