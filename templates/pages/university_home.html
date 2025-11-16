@@ -1,5 +1,39 @@
-{% extends "base.html" %} {% block title %}University Dashboard - Discovery
-Hub{% endblock %} {% block content %}
+{% extends "base.html" %}
+
+{% block title %}University Dashboard - Discovery Hub{% endblock %}
+
+{% block body_class %}university-home-page{% endblock %} {# Add a specific class to the body for this page #}
+
+{% block extra_head_styles %}
+<style>
+    /* Adjust header padding to make space for the hamburger menu */
+    .university-home-page .site-header .container.header-inner {
+        padding-left: 70px; /* Adjust based on hamburger menu size and position */
+    }
+
+    /* Adjust main content padding to make space for the hamburger menu */
+    .university-home-page #main-content .container {
+        padding-left: 70px; /* Same padding as header */
+    }
+
+    /* Ensure hamburger menu is always on top */
+    .hamburger-menu {
+        z-index: 1060; /* Higher than header's assumed z-index */
+    }
+    
+    /* When sidebar is active, remove the static padding, as main-content already shifts */
+    .content-shifted #main-content .container {
+        padding-left: 15px; /* Default container padding, assuming ~15px on each side */
+    }
+
+    /* When sidebar is active, adjust header padding */
+    .content-shifted .site-header .container.header-inner {
+        padding-left: 15px; /* Default container padding */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
 <div class="page-wrapper">
   <div class="hamburger-menu" onclick="toggleSidebar()">
     &#9776;

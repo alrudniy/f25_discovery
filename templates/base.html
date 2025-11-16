@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <script src="https://cdn.tailwindcss.com"></script>
     {% block styles %}{% endblock %}
+    {% comment %} Block for additional styles injected by child templates {% endcomment %}
+    {% block extra_head_styles %}{% endblock %}
   </head>
-  <body>
+  <body class="{% block body_class %}{% endblock %}">
     {% block body %} {% block header %}
     <header class="site-header">
       <div class="container header-inner">
