@@ -406,7 +406,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     border: 1px solid #e9ecef; /* Slightly darker border for contrast */
     border-left: 4px solid #dee2e6; /* Accent border for visual separation */
     border-radius: 8px; /* Consistent rounded corners */
-    padding: 25px; /* Increased padding to prevent text clinging to edges */
+    padding: 30px; /* Increased padding for better spacing */
     transition: transform 0.2s ease, box-shadow 0.2s ease,
       border-left-color 0.2s ease;
     display: flex; /* Use flexbox for better layout control */
@@ -428,6 +428,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     margin-bottom: 8px; /* Tailwind mb-2 equivalent */
     line-height: 1.3;
     overflow-wrap: break-word; /* Prevent long words from overflowing */
+    word-break: break-word; /* Ensure long words without spaces wrap correctly */
   }
 
   .list-item p {
@@ -436,6 +437,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     line-height: 1.6;
     margin-bottom: 16px; /* Tailwind mb-4 equivalent */
     overflow-wrap: break-word; /* Prevent long words from overflowing */
+    word-break: break-word; /* Ensure long words without spaces wrap correctly */
   }
 
   .list-item .tags-container {
