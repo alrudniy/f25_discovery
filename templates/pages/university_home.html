@@ -3,100 +3,114 @@
 {% block title %}University Dashboard - Discovery Hub{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Welcome, {{ university_name }}</h1>
-    <p class="muted">Here's your dashboard with the latest updates and opportunities.</p>
-
-    <div class="tab-buttons">
-        <button class="btn tab-button active" onclick="showScreen('other-universities-research')">Other Universities Research</button>
-        <button class="btn tab-button" onclick="showScreen('engagement-analytics')">Engagement Analytics</button>
-        <button class="btn tab-button" onclick="showScreen('recent-patents-funding')">Recent Patents/Funding by Industry</button>
+<div class="page-wrapper">
+    <div class="hamburger-menu" onclick="toggleSidebar()">
+        &#9776; <!-- Hamburger icon -->
     </div>
 
-    <div id="other-universities-research" class="screen-content">
-        <div class="dash-card">
-            <h2>Other Universities Research</h2>
-            <div class="item-list">
-                {% for project in research_projects %}
-                <div class="list-item">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description|default:"No description provided." }}</p>
-                    <p>
-                        {% if project.field %}
-                            <span class="tag">{{ project.field }}</span>
-                        {% else %}
-                            <span class="tag">General Research</span>
-                        {% endif %}
-                    </p>
+    <div class="sidebar-container" id="sidebar">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>Discovery Hub</h3>
+                <button class="close-sidebar" onclick="toggleSidebar()">X</button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{% url 'university_home' %}">Dashboard</a></li>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content" id="main-content">
+        <div class="container">
+            <h1>Welcome, {{ university_name }}</h1>
+            <p class="muted">Here's your dashboard with the latest updates and opportunities.</p>
+
+            <div class="tab-buttons">
+                <button class="btn tab-button active" onclick="showScreen('other-universities-research')">Other Universities Research</button>
+                <button class="btn tab-button" onclick="showScreen('engagement-analytics')">Engagement Analytics</button>
+                <button class="btn tab-button" onclick="showScreen('recent-patents-funding')">Recent Patents/Funding by Industry</button>
+            </div>
+
+            <!-- Search bar moved here, directly below tab buttons -->
+            <div class="dash-card search-bar-card">
+                <h2>Find Companies</h2>
+                <p class="muted">Search for companies that invest in research or patents.</p>
+                <form method="get" action="{% url 'university_home' %}" class="search-form">
+                    <input type="text" name="q" value="{{ current_query }}" placeholder="Search by name, focus area (e.g., AI, Patents)...">
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+
+            <div id="other-universities-research" class="screen-content">
+                <div class="dash-card">
+                    <h2>Other Universities Research</h2>
+                    <div class="item-list">
+                        {% for project in research_projects %}
+                        <div class="list-item">
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.description|default:"No description provided." }}</p>
+                            <p>
+                                {% if project.field %}
+                                    <span class="tag">{{ project.field }}</span>
+                                {% else %}
+                                    <span class="tag">General Research</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        {% empty %}
+                        <p>No research projects from other universities found.</p>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% empty %}
-                <p>No research projects from other universities found.</p>
-                {% endfor %}
             </div>
-        </div>
-    </div>
 
-    <div id="engagement-analytics" class="screen-content" style="display: none;">
-        <div class="dash-card">
-            <h2>Engagement Analytics</h2>
-            <p>This section will display analytics related to engagement with companies and other universities.</p>
-            <div class="analytics-chart-placeholder" style="height: 200px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888;">
-                [Chart Placeholder]
-            </div>
-            <p>Metrics such as connection requests, successful collaborations, and interest levels will be shown here.</p>
-        </div>
-    </div>
-
-    <div id="recent-patents-funding" class="screen-content" style="display: none;">
-        <div class="dash-card">
-            <h2>Recent Patents & Funding by Industry</h2>
-            <div class="item-list">
-                {% for update in funding_updates %}
-                <div class="list-item">
-                    <h3>{{ update.title }}</h3>
-                    <p>{{ update.description }}</p>
-                    <p>
-                        {% if update.industry %}
-                            <span class="tag">{{ update.industry }}</span>
-                        {% elif update.field %}
-                            <span class="tag">{{ update.field }}</span>
-                        {% else %}
-                            <span class="tag">General</span>
-                        {% endif %}
-                    </p>
-                    <span class="muted-text">{{ update.date_posted }}</span>
+            <div id="engagement-analytics" class="screen-content" style="display: none;">
+                <div class="dash-card">
+                    <h2>Engagement Analytics</h2>
+                    <p>This section will display analytics related to engagement with companies and other universities.</p>
+                    <div class="analytics-chart-placeholder" style="height: 200px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888;">
+                        [Chart Placeholder]
+                    </div>
+                    <p>Metrics such as connection requests, successful collaborations, and interest levels will be shown here.</p>
                 </div>
-                {% empty %}
-                <p>No recent patents or funding found by industry.</p>
-                {% endfor %}
             </div>
-        </div>
-    </div>
 
-    <div class="dash-card">
-        <h2>Find Companies</h2>
-        <p class="muted">Search for companies that invest in research or patents.</p>
-        <form method="get" action="{% url 'university_home' %}" class="search-form">
-            <input type="text" name="q" value="{{ current_query }}" placeholder="Search by name, focus area (e.g., AI, Patents)...">
-            <button type="submit" class="btn">Search</button>
-        </form>
-
-        <div class="company-list">
-            {% for company in companies %}
-            <div class="company-item">
-                <h3>{{ company.name }}</h3>
-                <p>Focus Areas: 
-                    {% for focus in company.focus %}
-                        <span class="tag">{{ focus }}</span>
-                    {% endfor %}
-                </p>
+            <div id="recent-patents-funding" class="screen-content" style="display: none;">
+                <div class="dash-card">
+                    <h2>Recent Patents & Funding by Industry</h2>
+                    <div class="item-list">
+                        {% for update in funding_updates %}
+                        <div class="list-item">
+                            <h3>{{ update.title }}</h3>
+                            <p>{{ update.description }}</p>
+                            <p>
+                                {% if update.industry %}
+                                    <span class="tag">{{ update.industry }}</span>
+                                {% elif update.field %}
+                                    <span class="tag">{{ update.field }}</span>
+                                {% else %}
+                                    <span class="tag">General</span>
+                                {% endif %}
+                            </p>
+                            <span class="muted-text">{{ update.date_posted }}</span>
+                        </div>
+                        {% empty %}
+                        <p>No recent patents or funding found by industry.</p>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-            {% empty %}
-            <p>No companies found matching your criteria.</p>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+
+            <!-- Removed the "Find Companies" card and its content from here -->
+            <!-- The content of the 'company-list' div is entirely removed as requested -->
+
+        </div> <!-- /container -->
+    </div> <!-- /main-content -->
+</div> <!-- /page-wrapper -->
 
 <script>
     function showScreen(screenId) {
@@ -112,12 +126,122 @@
         document.querySelector(`.tab-button[onclick*="${screenId}"]`).classList.add('active');
     }
 
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        sidebar.classList.toggle('active');
+        mainContent.classList.toggle('content-shifted');
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         showScreen('other-universities-research');
     });
 </script>
 
 <style>
+    /* New styles for sidebar */
+    .page-wrapper {
+        display: flex;
+        min-height: 100vh; /* Ensure it takes full viewport height */
+    }
+
+    .hamburger-menu {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 1050; /* Above sidebar */
+        color: #007bff; /* Match primary button color */
+    }
+
+    .sidebar-container {
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s ease-in-out;
+        background-color: #f8f9fa; /* Light background for sidebar */
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        position: fixed;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex; /* For vertical alignment of content */
+        flex-direction: column;
+    }
+
+    .sidebar-container.active {
+        width: 250px; /* Width when active */
+    }
+
+    .sidebar {
+        padding: 20px;
+        flex-grow: 1; /* Allows content to expand */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .sidebar-header h3 {
+        margin: 0;
+        color: #343a40;
+    }
+
+    .close-sidebar {
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-menu a {
+        text-decoration: none;
+        color: #495057;
+        font-size: 1.1em;
+        display: block;
+        padding: 8px 10px;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+    }
+
+    .sidebar-menu a:hover {
+        background-color: #e9ecef;
+        color: #0056b3; /* Darker blue on hover */
+    }
+
+
+    .main-content {
+        flex-grow: 1;
+        margin-left: 0; /* Default: no shift */
+        transition: margin-left 0.3s ease-in-out;
+        padding-top: 20px; /* Add some padding at the top for the hamburger button */
+        width: 100%; /* Take full width initially */
+    }
+
+    .main-content.content-shifted {
+        margin-left: 250px; /* Shift content when sidebar is active */
+    }
+
+    /* Original styles, ensure they are kept */
     .tab-buttons {
         display: flex;
         gap: 10px;
