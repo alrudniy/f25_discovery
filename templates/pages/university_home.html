@@ -241,6 +241,127 @@
         margin-left: 250px; /* Shift content when sidebar is active */
     }
 
+    /* Styles for dash-card elements */
+    .dash-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 1px solid #e0e0e0; /* Subtle border */
+    }
+
+    .dash-card h2 {
+        color: #343a40;
+        font-size: 1.8em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+    }
+
+    .dash-card p.muted {
+        color: #6c757d;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    /* Search form specific styles */
+    .search-form {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .search-form input[type="text"] {
+        flex-grow: 1;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        font-size: 1em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-form input[type="text"]::placeholder {
+        color: #adb5bd;
+    }
+
+    .search-form input[type="text"]:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .search-form .btn {
+        padding: 12px 20px;
+        font-size: 1em;
+        border-radius: 6px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-form .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Item list styling within dash-card */
+    .item-list {
+        display: grid;
+        gap: 20px; /* Space between list items */
+        margin-top: 20px;
+    }
+
+    .list-item {
+        background-color: #f8f9fa; /* Lighter background for items */
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 18px 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .list-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .list-item h3 {
+        color: #007bff; /* Primary blue for titles */
+        font-size: 1.3em;
+        margin-top: 0;
+        margin-bottom: 8px;
+        border-bottom: none; /* Remove border from h2 in dash-card */
+        padding-bottom: 0;
+    }
+
+    .list-item p {
+        color: #495057;
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .list-item .tag {
+        background-color: #e0f2f7; /* Light blue for tags */
+        color: #007bff;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8em;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    .list-item .muted-text {
+        font-size: 0.85em;
+        color: #888;
+        display: block; /* Ensure it takes its own line if needed */
+        margin-top: 5px;
+    }
+
+
     /* Original styles, ensure they are kept */
     .tab-buttons {
         display: flex;
@@ -282,6 +403,7 @@
         margin-bottom: 5px;
     }
 
+    /* Reset some specific item list styling conflicts */
     .list-item h3 {
         margin-top: 0;
         margin-bottom: 5px;
