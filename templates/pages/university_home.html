@@ -107,13 +107,16 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
               <p>
                 {{ project.description|default:"No description provided." }}
               </p>
-              <p>
+              <div class="tags-container">
                 {% if project.field %}
                 <span class="tag">{{ project.field }}</span>
                 {% else %}
                 <span class="tag">General Research</span>
                 {% endif %}
-              </p>
+              </div>
+              <div class="metadata">
+                {# Additional metadata can go here if needed #}
+              </div>
             </div>
             {% empty %}
             <p>No research projects from other universities found.</p>
@@ -166,7 +169,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
             <div class="list-item">
               <h3>{{ update.title }}</h3>
               <p>{{ update.description }}</p>
-              <p>
+              <div class="tags-container">
                 {% if update.industry %}
                 <span class="tag">{{ update.industry }}</span>
                 {% elif update.field %}
@@ -174,8 +177,10 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
                 {% else %}
                 <span class="tag">General</span>
                 {% endif %}
-              </p>
-              <span class="muted-text">{{ update.date_posted }}</span>
+              </div>
+              <div class="metadata">
+                <span class="muted-text">{{ update.date_posted }}</span>
+              </div>
             </div>
             {% empty %}
             <p>No recent patents or funding found by industry.</p>
@@ -399,49 +404,66 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   .list-item {
     background-color: #f8f9fa; /* Lighter background for items */
     border: 1px solid #e9ecef;
-    border-radius: 8px;
-    padding: 18px 20px;
+    border-radius: 10px; /* Slightly more rounded corners for items */
+    padding: 20px 25px; /* Increased padding */
+    margin-bottom: 15px; /* Space between items */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Use flexbox for better layout control */
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .list-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
   }
 
   .list-item h3 {
     color: #007bff; /* Primary blue for titles */
-    font-size: 1.3em;
+    font-size: 1.4em; /* Slightly larger title */
     margin-top: 0;
-    margin-bottom: 8px;
-    border-bottom: none; /* Remove border from h2 in dash-card */
-    padding-bottom: 0;
+    margin-bottom: 10px; /* More space below title */
+    line-height: 1.3;
   }
 
   .list-item p {
     color: #495057;
-    font-size: 0.95em;
-    line-height: 1.5;
-    margin-bottom: 10px;
+    font-size: 1em; /* Slightly larger body text */
+    line-height: 1.6;
+    margin-bottom: 12px; /* More space below description */
+  }
+
+  .list-item .tags-container {
+    margin-bottom: 10px; /* Space below tags, before metadata */
+    display: flex;
+    flex-wrap: wrap; /* Allow tags to wrap */
+    gap: 8px; /* Space between tags */
   }
 
   .list-item .tag {
     background-color: #e0f2f7; /* Light blue for tags */
     color: #007bff;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    font-weight: 600; /* Bolder tags */
+    padding: 6px 12px; /* More padding for tags */
+    border-radius: 20px; /* Pill-shaped tags */
+    font-size: 0.85em; /* Slightly larger tag font */
+    white-space: nowrap; /* Prevent tag text from wrapping */
+  }
+
+  .list-item .metadata {
+    display: flex;
+    justify-content: flex-end; /* Align metadata to the right */
+    align-items: center;
+    margin-top: auto; /* Push metadata to the bottom if content is short */
   }
 
   .list-item .muted-text {
-    font-size: 0.85em;
+    font-size: 0.9em; /* Consistent with previous muted text */
     color: #888;
-    display: block; /* Ensure it takes its own line if needed */
-    margin-top: 5px;
+    margin-top: 0; /* Adjust as it's now in a flex container */
+    margin-left: auto; /* Pushes date to the right if there are other metadata elements */
   }
+
 
   /* Original styles, ensure they are kept */
   .tab-buttons {
@@ -473,28 +495,9 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     font-weight: bold;
   }
 
-  .tag {
-    display: inline-block;
-    background-color: #e2e6ea; /* Light grey, similar to bootstrap badge-secondary */
-    color: #495057;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    margin-right: 5px;
-    margin-bottom: 5px;
-  }
-
-  /* Reset some specific item list styling conflicts */
-  .list-item h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
+  /* Reset some specific item list styling conflicts, if any */
   .list-item p {
     margin-bottom: 5px;
-  }
-  .muted-text {
-    font-size: 0.9em;
-    color: #6c757d; /* Muted color */
   }
 </style>
 {% endblock %}
