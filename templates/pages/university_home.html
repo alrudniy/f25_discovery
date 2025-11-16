@@ -103,10 +103,6 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
           <div class="item-list">
             {% for project in research_projects %}
             <div class="list-item">
-              <h3>{{ project.title }}</h3>
-              <p>
-                {{ project.description|default:"No description provided." }}
-              </p>
               <div class="tags-container">
                 {% if project.field %}
                 <span class="tag">{{ project.field }}</span>
@@ -114,6 +110,10 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
                 <span class="tag">General Research</span>
                 {% endif %}
               </div>
+              <h3>{{ project.title }}</h3>
+              <p>
+                {{ project.description|default:"No description provided." }}
+              </p>
               <div class="metadata">
                 {# Additional metadata can go here if needed #}
               </div>
@@ -167,8 +167,6 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
           <div class="item-list">
             {% for update in funding_updates %}
             <div class="list-item">
-              <h3>{{ update.title }}</h3>
-              <p>{{ update.description }}</p>
               <div class="tags-container">
                 {% if update.industry %}
                 <span class="tag">{{ update.industry }}</span>
@@ -178,6 +176,8 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
                 <span class="tag">General</span>
                 {% endif %}
               </div>
+              <h3>{{ update.title }}</h3>
+              <p>{{ update.description }}</p>
               <div class="metadata">
                 <span class="muted-text">{{ update.date_posted }}</span>
               </div>
@@ -405,7 +405,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     background-color: #f8f9fa; /* Light grey background for each list item */
     border: 1px solid #e9ecef; /* Slightly darker border for contrast */
     border-radius: 8px; /* Consistent rounded corners */
-    padding: 35px; /* Further increased padding to ensure text doesn't touch the background box */
+    padding: 24px; /* Adjusted padding for a cleaner look */
     margin-bottom: 15px; /* Space between items */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex; /* Use flexbox for better layout control */
@@ -435,7 +435,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   }
 
   .list-item .tags-container {
-    margin-bottom: 12px; /* Adjusted space below tags, before metadata */
+    margin-bottom: 12px; /* Space below tags, before title */
     display: flex;
     flex-wrap: wrap; /* Allow tags to wrap */
     gap: 8px; /* Space between tags */
@@ -496,9 +496,5 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     font-weight: bold;
   }
 
-  /* Reset some specific item list styling conflicts, if any */
-  .list-item p {
-    margin-bottom: 5px;
-  }
 </style>
 {% endblock %}
