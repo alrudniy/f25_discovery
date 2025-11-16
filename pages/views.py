@@ -97,21 +97,20 @@ def company_home(request):
 
     projects = all_projects
     query = request.GET.get('q')
-    field_filter = request.GET.get('field')
+    field_filter = request.GET.get('field', '')
 
     if query:
         projects = [p for p in projects if query.lower() in p['title'].lower() or query.lower() in p['description'].lower()]
-    if field_filter and field_filter != 'All':
+    if field_filter:
         projects = [p for p in projects if p['field'] == field_filter]
 
     # Get all unique fields for the filter dropdown
     available_fields = sorted(list(set([p['field'] for p in all_projects])))
-    available_fields.insert(0, 'All') # Add 'All' option at the beginning
 
     context = {
         'projects': projects,
         'current_query': query if query else '',
-        'current_field': field_filter if field_filter else 'All',
+        'current_field': field_filter,
         'available_fields': available_fields,
     }
     return render(request, 'pages/company_home.html', context)

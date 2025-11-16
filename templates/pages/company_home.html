@@ -33,9 +33,10 @@
                    class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
             <select name="field"
                     class="p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="" {% if not current_field %}selected{% endif %}>All Fields</option>
                 {% for field in available_fields %}
                     <option value="{{ field }}" {% if field == current_field %}selected{% endif %}>
-                        {% if field == "All" %}All Fields{% else %}{{ field }}{% endif %}
+                        {{ field }}
                     </option>
                 {% endfor %}
             </select>
