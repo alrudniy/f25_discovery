@@ -399,15 +399,12 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     display: grid;
     gap: 20px; /* Space between list items */
     margin-top: 20px;
-    background-color: #f8f9fa; /* Light grey background for the list container */
-    padding: 20px; /* Add some padding around the list items */
-    border-radius: 8px; /* Match border-radius of items */
   }
 
   .list-item {
-    background-color: #ffffff; /* White background from company_home */
-    border: 1px solid #e2e8f0; /* Tailwind gray-200 equivalent */
-    border-radius: 8px; /* Tailwind rounded-lg equivalent */
+    background-color: #f8f9fa; /* Light grey background for each list item */
+    border: 1px solid #e9ecef; /* Slightly darker border for contrast */
+    border-radius: 8px; /* Consistent rounded corners */
     padding: 24px; /* Tailwind p-6 equivalent */
     margin-bottom: 15px; /* Space between items */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
