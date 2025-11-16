@@ -404,10 +404,11 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   .list-item {
     background-color: #f8f9fa; /* Light grey background for each list item */
     border: 1px solid #e9ecef; /* Slightly darker border for contrast */
+    border-left: 4px solid #dee2e6; /* Accent border for visual separation */
     border-radius: 8px; /* Consistent rounded corners */
-    padding: 24px; /* Adjusted padding for a cleaner look */
-    margin-bottom: 15px; /* Space between items */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 20px; /* Refined padding for a cleaner look */
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+      border-left-color 0.2s ease;
     display: flex; /* Use flexbox for better layout control */
     flex-direction: column;
     justify-content: space-between;
@@ -416,11 +417,12 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   .list-item:hover {
     transform: translateY(-2px); /* Slightly less aggressive lift on hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* More prominent shadow for hover, similar to shadow-lg */
+    border-left-color: #007bff; /* Highlight with primary color on hover */
   }
 
   .list-item h3 {
     color: #1e293b; /* Tailwind gray-800 for titles */
-    font-size: 1.25em; /* Tailwind text-xl equivalent */
+    font-size: 1.35em; /* Increased font size for better hierarchy */
     font-weight: 600; /* Tailwind font-semibold */
     margin-top: 0;
     margin-bottom: 8px; /* Tailwind mb-2 equivalent */
@@ -442,8 +444,8 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   }
 
   .list-item .tag {
-    background-color: #e0e7ff; /* Tailwind indigo-100 */
-    color: #4338ca; /* Tailwind indigo-700 */
+    background-color: #cfe2ff; /* Lighter blue, aligned with primary theme */
+    color: #0056b3; /* Darker blue text for contrast */
     font-weight: 500; /* Tailwind font-medium */
     padding: 4px 10px; /* Tailwind py-1 px-3 equivalent, adjusted */
     border-radius: 9999px; /* Pill-shaped tags (Tailwind rounded-full) */
