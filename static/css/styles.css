@@ -31,25 +31,6 @@ fieldset.form-field { border:1px solid #e5e7eb; border-radius:.6rem; padding:.75
     gap: 2rem;
 }
 
-.item-list .list-item {
-    border-bottom: 1px solid #e5e7eb;
-    padding: 1rem 0;
-}
-
-.item-list .list-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.item-list .list-item h3 {
-    margin: 0 0 0.5rem 0;
-}
-
-.item-list .list-item p {
-    margin: 0;
-    color: #475569;
-}
-
 .muted-text {
     font-size: 0.875rem;
     color: #6b7280;
