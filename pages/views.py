@@ -7,6 +7,8 @@ def welcome(request):
 
 @login_required
 def screen1(request):
+    if request.user.user_type == User.UserType.UNIVERSITY:
+        return redirect('university_home')
     role = request.user.user_type.title() if hasattr(request.user, 'user_type') else 'User'
     return render(request, 'pages/screen1.html', {'role': role})
 
