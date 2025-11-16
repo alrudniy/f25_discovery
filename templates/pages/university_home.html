@@ -453,7 +453,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
 
   .list-item .metadata {
     display: flex;
-    justify-content: flex-end; /* Align metadata to the right */
+    justify-content: flex-start; /* Align metadata to the left */
     align-items: center;
     margin-top: auto; /* Push metadata to the bottom if content is short */
   }
@@ -462,7 +462,7 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     font-size: 0.875em; /* Tailwind text-sm equivalent */
     color: #6b7280; /* Tailwind gray-500 */
     margin-top: 0;
-    margin-left: auto;
+    margin-left: 0; /* Align text to the left */
   }
 
 
