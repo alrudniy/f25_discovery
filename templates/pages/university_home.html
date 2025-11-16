@@ -402,41 +402,33 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   }
 
   .list-item {
-    background-color: #f8f9fa; /* Light grey background for each list item */
-    border: 1px solid #e9ecef; /* Slightly darker border for contrast */
-    border-left: 4px solid #dee2e6; /* Accent border for visual separation */
-    border-radius: 8px; /* Consistent rounded corners */
-    padding: 30px; /* Increased padding for better spacing */
-    transition: transform 0.2s ease, box-shadow 0.2s ease,
-      border-left-color 0.2s ease;
-    display: flex; /* Use flexbox for better layout control */
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid #dee2e6;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
     flex-direction: column;
+    gap: 10px; /* Adds consistent spacing between all internal elements */
   }
-
   .list-item:hover {
     transform: translateY(-2px); /* Slightly less aggressive lift on hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* More prominent shadow for hover, similar to shadow-lg */
     border-left-color: #007bff; /* Highlight with primary color on hover */
   }
-
   .list-item h3 {
-    color: #1e293b; /* Tailwind gray-800 for titles */
-    font-size: 1.35em; /* Increased font size for better hierarchy */
-    font-weight: 600; /* Tailwind font-semibold */
-    margin-top: 0;
-    margin-bottom: 12px; /* Consistent vertical spacing */
-    line-height: 1.3;
-    overflow-wrap: break-word; /* Prevent long words from overflowing */
-    word-break: break-word; /* Ensure long words without spaces wrap correctly */
+    margin: 0;
+    padding: 0;
+    line-height: 1.35;
+    font-size: 1.25em;
+    color: #1e293b;
   }
 
   .list-item p {
-    color: #374151; /* Tailwind gray-700 for body text */
-    font-size: 0.95em; /* Tailwind text-sm equivalent */
-    line-height: 1.6;
-    margin-bottom: 12px; /* Consistent vertical spacing */
-    overflow-wrap: break-word; /* Prevent long words from overflowing */
-    word-break: break-word; /* Ensure long words without spaces wrap correctly */
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.55;
+    color: #374151;
   }
 
   .list-item .tags-container {
@@ -457,19 +449,15 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
   }
 
   .list-item .metadata {
+    margin-top: auto;
     display: flex;
-    justify-content: flex-start; /* Align metadata to the left */
     align-items: center;
-    margin-top: auto; /* Push metadata to the bottom if content is short */
   }
 
   .list-item .muted-text {
-    font-size: 0.875em; /* Tailwind text-sm equivalent */
-    color: #6b7280; /* Tailwind gray-500 */
-    margin-top: 0;
-    margin-left: 0; /* Align text to the left */
+    color: #6b7280;
+    font-size: 0.9em;
   }
-
 
   /* Original styles, ensure they are kept */
   .tab-buttons {
@@ -500,6 +488,5 @@ Add a specific class to the body for this page #} {% block extra_head_styles %}
     color: white;
     font-weight: bold;
   }
-
 </style>
 {% endblock %}
