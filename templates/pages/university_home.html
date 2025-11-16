@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}University Dashboard - Discovery Hub{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{ university_name }}</h1>
+    <p class="muted">Here's your dashboard with the latest updates and opportunities.</p>
+
+    <div class="dash-grid">
+        <div class="dash-card">
+            <h2>Recent Funding Updates</h2>
+            <div class="item-list">
+                {% for update in funding_updates %}
+                <div class="list-item">
+                    <h3>{{ update.title }}</h3>
+                    <p>{{ update.description }}</p>
+                    <span class="muted-text">{{ update.date_posted }}</span>
+                </div>
+                {% empty %}
+                <p>No recent funding updates.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <h2>Your Research Projects</h2>
+            <div class="item-list">
+                {% for project in research_projects %}
+                <div class="list-item">
+                    <h3>{{ project.title }}</h3>
+                    <p><strong>Field:</strong> {{ project.field }} | <strong>Status:</strong> {{ project.status }}</p>
+                </div>
+                {% empty %}
+                <p>You have no active research projects.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="dash-card">
+        <h2>Find Companies</h2>
+        <p class="muted">Search for companies that invest in research or patents.</p>
+        <form method="get" action="{% url 'university_home' %}" class="search-form">
+            <input type="text" name="q" value="{{ current_query }}" placeholder="Search by name, focus area (e.g., AI, Patents)...">
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        <div class="company-list">
+            {% for company in companies %}
+            <div class="company-item">
+                <h3>{{ company.name }}</h3>
+                <p>Focus Areas: 
+                    {% for focus in company.focus %}
+                        <span class="tag">{{ focus }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+            {% empty %}
+            <p>No companies found matching your criteria.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

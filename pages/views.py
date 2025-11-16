@@ -43,10 +43,35 @@ def university_home(request):
     if request.user.user_type != User.UserType.UNIVERSITY:
         return redirect('screen1')  # Redirect if not a university user
 
-    # Placeholder context for university_home.html
+    # Placeholder data for the university dashboard
+    funding_updates = [
+        {'title': 'New Grant for AI Research', 'description': 'The National Science Foundation has awarded a $5M grant for advancements in AI.', 'date_posted': '2 days ago'},
+        {'title': 'Biotechnology Funding Initiative', 'description': 'A new initiative by PharmaCorp to fund biotech startups and university research.', 'date_posted': '1 week ago'},
+    ]
+    research_projects = [
+        {'title': 'Quantum Computing Advancements', 'field': 'Physics', 'status': 'Ongoing'},
+        {'title': 'CRISPR Gene Editing Applications', 'field': 'Biology', 'status': 'Ongoing'},
+        {'title': 'Sustainable Urban Development', 'field': 'Architecture', 'status': 'Completed'},
+    ]
+    all_companies = [
+        {'name': 'Tech Innovators Inc.', 'focus': ['AI', 'Machine Learning']},
+        {'name': 'BioHealth Corp.', 'focus': ['Biotechnology', 'Patents']},
+        {'name': 'GreenEnergy Solutions', 'focus': ['Renewable Energy', 'Research']},
+        {'name': 'QuantumLeap Computing', 'focus': ['Quantum Computing', 'Patents']},
+    ]
+
+    # Search logic for companies
+    query = request.GET.get('q', '')
+    companies = all_companies
+    if query:
+        companies = [c for c in all_companies if query.lower() in c['name'].lower() or any(query.lower() in f.lower() for f in c['focus'])]
+
     context = {
-        'university_name': request.user.username.title() if request.user.is_authenticated else 'University',
-        # Add any other data relevant to university users here
+        'university_name': request.user.username.title(),
+        'funding_updates': funding_updates,
+        'research_projects': research_projects,
+        'companies': companies,
+        'current_query': query,
     }
     return render(request, 'pages/university_home.html', context)
 
