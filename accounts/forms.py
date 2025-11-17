@@ -13,9 +13,10 @@ class EmailAuthenticationForm(AuthenticationForm):
     # Field is still named "username" internally; label it clearly as Email.
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        input_classes = 'w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-gray-800'
         self.fields['username'].label = 'Email'
-        self.fields['username'].widget.attrs.update({'placeholder': 'you@example.com', 'autofocus': True})
-        self.fields['password'].widget.attrs.update({'placeholder': 'password'})
+        self.fields['username'].widget.attrs.update({'placeholder': 'you@example.com', 'autofocus': True, 'class': input_classes})
+        self.fields['password'].widget.attrs.update({'placeholder': 'password', 'class': input_classes})
 
 
 class CustomPasswordResetForm(PasswordResetForm):
