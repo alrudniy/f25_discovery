@@ -567,3 +567,84 @@
 
 # 2025-11-09 16:15:26.520648
 +n
+
+# 2025-11-14 16:56:15.597459
++Using the transcript from this video run a similar test but on my instead. Here is the video: https://www.youtube.com/watch?v=0MrgsYswT1c
+
+# 2025-11-14 18:29:09.362212
++Add a test.py to the tests folder
+
+# 2025-11-16 18:10:00.507803
++Add a folder named Julia to this project
+
+# 2025-11-17 12:57:53.697161
++/ls
+
+# 2025-11-17 12:58:37.572778
++/model
+
+# 2025-11-17 12:59:15.088234
++/settings
+
+# 2025-11-17 13:00:38.625514
++/model gemini/gemini-2.5-flash
+
+# 2025-11-17 13:01:11.467371
++Make a txt file named Julia that contains the text "hi"
+
+# 2025-11-17 13:02:12.360247
++/weak-model
+
+# 2025-11-17 13:02:24.303888
++/weak-model gemini/gemini-2.5-flash
+
+# 2025-11-17 13:02:39.176639
++Make a txt file named Julia2 that contains the text "hi"
+
+# 2025-11-17 13:04:50.261907
++/models
+
+# 2025-11-17 13:05:04.145348
++/models gemini
+
+# 2025-11-17 13:06:10.229463
++/weak-model gemini/gemini-2.5-flash-lite
+
+# 2025-11-17 13:06:24.170590
++/model gemini/gemini-2.5-flash
+
+# 2025-11-17 13:06:39.035934
++Make a txt file named Julia3 that contains the text "hi"
+
+# 2025-11-17 13:13:16.255671
++/exit
+
+# 2025-11-17 13:14:28.498149
++Make a txt file named Julia4 that contains the text "hi"
+
+# 2025-11-17 13:15:18.449955
++/exit
+
+# 2025-11-17 14:57:10.243025
++Change the notifications.html so that the graphics match the graphics of the company_home.html
+
+# 2025-11-17 15:01:08.467705
++Change http://127.0.0.1:8000/notifications/ so that it matches the overall color and style on the server 
+
+# 2025-11-17 15:06:26.751897
++How can I view the changes you made on the server?
+
+# 2025-11-17 15:08:09.410659
++I still do not see changes made to the notifications page - it does not appear to be different when I run the server
+
+# 2025-11-17 15:24:54.573481
++N
+
+# 2025-11-17 15:25:26.001470
++Can you delete the screens like the one http://127.0.0.1:8000/screen3/ so that there will only be a Notification tab and a Home Page tab
+
+# 2025-11-17 15:26:19.275805
++n
+
+# 2025-11-17 15:26:38.486966
++/undo
