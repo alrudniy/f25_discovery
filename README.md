@@ -6,7 +6,7 @@
 **Windows**
 ```bash
 python -m venv venv
-venv\Scripts\activate
+c
 ```
 
 **macOS / Linux**
@@ -110,7 +110,7 @@ Open: **http://127.0.0.1:8000/**
 
 | Role       | Email                  | Password       |
 |------------|------------------------|----------------|
-| University | `university@drew.edu` | `c` |
+| University | `university@drew.edu` | `ChangeMe123!` |
 | Company    | `company1@drew.edu`   | `ChangeMe123!` |
 | Investor   | `investor@drew.edu`   | `ChangeMe123!` |
 
