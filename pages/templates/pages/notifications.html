@@ -5,33 +5,46 @@
 {% block screen_links %}{% endblock screen_links %}
 
 {% block content %}
-  <h2 class="text-3xl font-bold mb-6">Notifications</h2>
-  
-  <div class="mb-8">
-    <h3 class="text-xl font-semibold mb-4">Current Notifications</h3>
-    {% if current_notifications %}
-      <ul class="space-y-4">
-        {% for notification in current_notifications %}
-          <li class="bg-white p-4 rounded-lg shadow">{{ notification }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="text-gray-500">No new notifications.</p>
-    {% endif %}
-  </div>
-  
-  <hr class="my-8">
-  
-  <div>
-    <h3 class="text-xl font-semibold mb-4">Previous Notifications</h3>
-    {% if previous_notifications %}
-      <ul class="space-y-4">
-        {% for notification in previous_notifications %}
-          <li class="bg-gray-100 p-4 rounded-lg shadow-sm text-gray-700">{{ notification }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="text-gray-500">No previous notifications.</p>
-    {% endif %}
-  </div>
+<div class="notifications-page p-6">
+    <!-- Hero Section -->
+    <div class="hero bg-indigo-700 text-white p-8 rounded-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Notifications</h1>
+    </div>
+
+    <!-- Current Notifications -->
+    <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Current Notifications</h2>
+        {% if current_notifications %}
+            <div class="space-y-4">
+                {% for notification in current_notifications %}
+                    <div class="notification-card bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                        <p class="text-gray-700">{{ notification }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-notifications-message text-center p-8 bg-white rounded-lg shadow-md">
+                <p class="text-gray-600 text-lg">No new notifications.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Previous Notifications -->
+    <div>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Previous Notifications</h2>
+        {% if previous_notifications %}
+            <div class="space-y-4">
+                {% for notification in previous_notifications %}
+                    <div class="notification-card bg-white p-6 rounded-lg shadow-md border border-gray-200 opacity-75">
+                        <p class="text-gray-600">{{ notification }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-notifications-message text-center p-8 bg-white rounded-lg shadow-md">
+                <p class="text-gray-600 text-lg">No previous notifications.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
