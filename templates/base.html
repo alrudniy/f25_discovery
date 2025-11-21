@@ -18,9 +18,11 @@
       <nav>
         <ul class="nav">
           {% if user.is_authenticated %}
+            {% block screen_links %}
             <li><a href="{% url 'screen1' %}">Screen&nbsp;1</a></li>
             <li><a href="{% url 'screen2' %}">Screen&nbsp;2</a></li>
             <li><a href="{% url 'screen3' %}">Screen&nbsp;3</a></li>
+            {% endblock screen_links %}
             <li><a href="{% url 'notifications' %}">Notifications</a></li>
             {% if user.user_type == 'company' %}
               <li><a href="{% url 'company_home' %}">Company&nbsp;Home</a></li>
