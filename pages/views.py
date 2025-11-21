@@ -178,3 +178,42 @@ def investor_profile(request):
         'investor': investor_data,
     }
     return render(request, 'pages/investor_profile.html', context)
+
+
+@login_required
+def university_profile(request):
+    # Restrict access to only university users
+    if request.user.user_type != User.UserType.UNIVERSITY:
+        return redirect('screen1') # Redirect if not a university user
+
+    # This is dummy data for now.
+    university_data = {
+        'name': request.user.username.title(),
+        'location': 'Innovation City, Knowledge State',
+        'about': 'A leading institution for higher education and research, committed to academic excellence and fostering innovation. We have a rich history of producing leaders and pioneers in various fields.',
+        'website': 'https://university.example.edu',
+        'type': 'Public Research University',
+        'enrollment': '35,000',
+        'founded': 1850,
+        'departments': [
+            'Computer Science', 'Electrical Engineering', 'Biomedical Engineering',
+            'Physics', 'Chemistry', 'Business Administration'
+        ],
+        'research': [
+            {
+                'title': 'Quantum Computing Advancements',
+                'publication': 'Journal of Quantum Information',
+                'summary': 'Breakthroughs in qubit stability and error correction, paving the way for more powerful quantum computers.'
+            },
+            {
+                'title': 'CRISPR-based Gene Therapy for Genetic Disorders',
+                'publication': 'Nature Biotechnology',
+                'summary': 'Developing novel gene-editing techniques to treat inherited diseases with high precision.'
+            },
+        ],
+    }
+    
+    context = {
+        'university': university_data,
+    }
+    return render(request, 'pages/university_profile.html', context)
