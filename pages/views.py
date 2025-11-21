@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from accounts.models import User
 
 def welcome(request):
-    return render(request, 'pages/welcome.html')
+    return render(request, 'welcome.html')
 
 @login_required
 def screen1(request):
@@ -37,10 +38,24 @@ def notifications(request): # added for notifications page
     return render(request, 'pages/notifications.html', context)
 
 @login_required
+def university_home(request):
+    # Restrict access to only university users
+    if request.user.user_type != User.UserType.UNIVERSITY:
+        return redirect('screen1')  # Redirect if not a university user
+
+    # Placeholder context for university_home.html
+    context = {
+        'university_name': request.user.username.title() if request.user.is_authenticated else 'University',
+        # Add any other data relevant to university users here
+    }
+    return render(request, 'pages/university_home.html', context)
+
+
+@login_required
 def company_home(request):
     # Restrict access to only company users
     if request.user.user_type != User.UserType.COMPANY:
-        return redirect('welcome') # Redirect if not a company user
+        return redirect('screen1') # Redirect if not a company user
 
     # Placeholder for Project objects.
     # In a real application, you would import and query your Project model here.

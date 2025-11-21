@@ -110,8 +110,8 @@ Open: **http://127.0.0.1:8000/**
 
 | Role       | Email                  | Password       |
 |------------|------------------------|----------------|
-| University | `university@drew.edu` | `ChangeMe123!` |
-| Company    | `company@drew.edu`    | `ChangeMe123!` |
+| University | `university@drew.edu` | `c` |
+| Company    | `company1@drew.edu`   | `ChangeMe123!` |
 | Investor   | `investor@drew.edu`   | `ChangeMe123!` |
 
 > Change these passwords after first login if you keep them around.

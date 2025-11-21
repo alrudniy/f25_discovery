@@ -10,4 +10,5 @@ urlpatterns = [
     path('university/', include('universityAccount.urls')),
     # URL for the Company Home Page (Dashboard)
     path('company/home/', views.company_home, name='company_home'),
+    path('university/home/', views.university_home, name='university_home'),
 ]
