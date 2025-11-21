@@ -5,12 +5,8 @@
     <div class="max-w-4xl mx-auto">
         <!-- Profile Header -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
-            <div class="h-48 bg-indigo-700 relative">
-                <!-- Placeholder for banner image -->
-                <img src="https://via.placeholder.com/800x200" alt="Company Banner" class="w-full h-full object-cover">
-            </div>
             <div class="p-6">
-                <div class="flex items-end -mt-20">
+                <div class="flex items-end">
                     <div class="w-32 h-32 rounded-full border-4 border-white bg-gray-200">
                         <!-- Placeholder for company logo -->
                         <img src="https://via.placeholder.com/128" alt="Company Logo" class="rounded-full">
@@ -64,9 +60,9 @@
                     <a href="#" class="text-indigo-600 hover:underline">View job</a>
                 </div>
                 {% endfor %}
-                 {% if not company.jobs %}
+                {% if not company.jobs %}
                     <p class="text-gray-600">No open positions at the moment.</p>
-                 {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
