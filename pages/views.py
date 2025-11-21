@@ -137,3 +137,44 @@ def company_profile(request):
         'company': company_data,
     }
     return render(request, 'pages/company_profile.html', context)
+
+
+@login_required
+def investor_profile(request):
+    # Restrict access to only investor users
+    if request.user.user_type != User.UserType.INVESTOR:
+        return redirect('screen1') # Redirect if not an investor user
+
+    # This is dummy data for now, inspired by LinkedIn/AngelList profiles.
+    investor_data = {
+        'name': request.user.display_name,
+        'title': 'Managing Partner',
+        'firm': 'Venture Capital Partners',
+        'location': 'Silicon Valley, CA',
+        'about': 'Seasoned investor with over 15 years of experience in early-stage technology startups. Passionate about helping entrepreneurs build disruptive companies. My focus is on SaaS, FinTech, and AI. Looking to connect with innovative founders who are changing the world.',
+        'focus': {
+            'industries': ['SaaS', 'FinTech', 'Artificial Intelligence', 'HealthTech'],
+            'stage': 'Seed, Series A',
+            'check_size': '$250k - $2M',
+            'geography': 'North America',
+        },
+        'portfolio': [
+            {
+                'company': 'Innovate AI',
+                'industry': 'Artificial Intelligence',
+                'year': '2021',
+                'description': 'A leading platform for developing and deploying machine learning models at scale.'
+            },
+            {
+                'company': 'FinSecure',
+                'industry': 'FinTech',
+                'year': '2019',
+                'description': 'Cybersecurity solutions for financial institutions, acquired by a major bank in 2023.'
+            },
+        ],
+    }
+    
+    context = {
+        'investor': investor_data,
+    }
+    return render(request, 'pages/investor_profile.html', context)

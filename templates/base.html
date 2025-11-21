@@ -27,6 +27,11 @@
             {% if user.user_type == 'company' %}
               <li><a href="{% url 'company_profile' %}">Company&nbsp;Profile</a></li>
               <li><a href="{% url 'company_home' %}">Company&nbsp;Home</a></li>
+            {% elif user.user_type == 'investor' %}
+              <li><a href="{% url 'investor_profile' %}">Investor&nbsp;Profile</a></li>
+              <li><a href="{% url 'screen1' %}">Home Page</a></li>
+              <li><a href="{% url 'screen2' %}">View Research</a></li>
+              <li><a href="{% url 'screen3' %}">Match with others</a></li>
             {% else %}
               <li><a href="{% url 'screen1' %}">Home Page</a></li>
               <li><a href="{% url 'screen2' %}">View Research</a></li>
