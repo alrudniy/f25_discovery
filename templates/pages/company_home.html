@@ -34,7 +34,7 @@
             <select name="field"
                     class="p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 {% for field in available_fields %}
-                    <option value="{{ field }}" {% if field == current_field %}selected{% endif %}>
+                    <option value="{% if field != 'All' %}{{ field }}{% endif %}" {% if field == current_field %}selected{% endif %}>
                         {% if field == "All" %}All Fields{% else %}{{ field }}{% endif %}
                     </option>
                 {% endfor %}
