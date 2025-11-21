@@ -5,29 +5,33 @@
 {% block screen_links %}{% endblock screen_links %}
 
 {% block content %}
-  <h2>Notifications</h2>
+  <h2 class="text-3xl font-bold mb-6">Notifications</h2>
   
-  <h3>Current Notifications</h3>
-  {% if current_notifications %}
-    <ul>
-      {% for notification in current_notifications %}
-        <li>{{ notification }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No new notifications.</p>
-  {% endif %}
+  <div class="mb-8">
+    <h3 class="text-xl font-semibold mb-4">Current Notifications</h3>
+    {% if current_notifications %}
+      <ul class="space-y-4">
+        {% for notification in current_notifications %}
+          <li class="bg-white p-4 rounded-lg shadow">{{ notification }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">No new notifications.</p>
+    {% endif %}
+  </div>
   
-  <hr>
+  <hr class="my-8">
   
-  <h3>Previous Notifications</h3>
-  {% if previous_notifications %}
-    <ul>
-      {% for notification in previous_notifications %}
-        <li>{{ notification }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No previous notifications.</p>
-  {% endif %}
+  <div>
+    <h3 class="text-xl font-semibold mb-4">Previous Notifications</h3>
+    {% if previous_notifications %}
+      <ul class="space-y-4">
+        {% for notification in previous_notifications %}
+          <li class="bg-gray-100 p-4 rounded-lg shadow-sm text-gray-700">{{ notification }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-gray-500">No previous notifications.</p>
+    {% endif %}
+  </div>
 {% endblock %}
