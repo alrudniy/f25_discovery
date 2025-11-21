@@ -88,3 +88,52 @@ def company_home(request):
         'available_fields': available_fields,
     }
     return render(request, 'pages/company_home.html', context)
+
+
+@login_required
+def company_profile(request):
+    # Restrict access to only company users
+    if request.user.user_type != User.UserType.COMPANY:
+        return redirect('screen1') # Redirect if not a company user
+
+    # This is dummy data for now, inspired by LinkedIn company profiles.
+    company_data = {
+        'name': request.user.username.title(),
+        'tagline': 'Innovating for a better future, one line of code at a time.',
+        'about': 'We are a forward-thinking technology company specializing in custom software solutions that drive business growth. Our mission is to empower our clients through innovative technology and expert consulting. We believe in creating partnerships, not just products.',
+        'website': 'https://example.com',
+        'industry': 'Information Technology & Services',
+        'size': '51-200 employees',
+        'headquarters': 'Tech City, Innovation State',
+        'founded': 2010,
+        'specialties': ['Web Development', 'Cloud Computing', 'AI & Machine Learning', 'Enterprise Solutions'],
+        'projects': [
+            {
+                'title': 'AI-Powered Analytics Platform',
+                'duration': '2022 - Present',
+                'description': 'Developed a platform that provides deep insights into customer behavior using machine learning algorithms.'
+            },
+            {
+                'title': 'Global E-commerce Marketplace',
+                'duration': '2020 - 2022',
+                'description': 'Built a scalable and secure marketplace serving millions of users worldwide.'
+            },
+        ],
+        'jobs': [
+            {
+                'title': 'Senior Python Developer',
+                'location': 'Remote',
+                'type': 'Full-time'
+            },
+            {
+                'title': 'Frontend Engineer (React)',
+                'location': 'Tech City Office',
+                'type': 'Full-time'
+            },
+        ]
+    }
+    
+    context = {
+        'company': company_data,
+    }
+    return render(request, 'pages/company_profile.html', context)
