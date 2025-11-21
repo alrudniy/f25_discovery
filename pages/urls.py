@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import buggy_view_fixed
 
 urlpatterns = [
     path('', views.welcome, name='welcome'),
@@ -10,4 +11,5 @@ urlpatterns = [
     # URL for the Company Home Page (Dashboard)
     path('company/home/', views.company_home, name='company_home'),
     path('university/home/', views.university_home, name='university_home'),
+    path('buggy/', buggy_view_fixed.buggy_search, name='buggy_search'),
 ]
